@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="ASCII"?>
+<intermediate:IntermediateOperationModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:intermediate="http://www.fhdo.de/lemma/operation/intermediate" sourceModelUri="file://C:/Users/Simon/Documents/Arbeitsordner LEMMA/puls-amp-2021/infrastructure/mariadb.operation">
+  <imports name="container_base" importUri="file://C:/Users/Simon/Documents/Arbeitsordner LEMMA/puls-amp-2021/technology/container_base.technology" importTypeName="TECHNOLOGY"/>
+  <imports name="mariadb" importUri="file://C:/Users/Simon/Documents/Arbeitsordner LEMMA/puls-amp-2021/technology/mariadb.technology" importTypeName="TECHNOLOGY"/>
+  <imports name="bookingService" importUri="file://C:/Users/Simon/Documents/Arbeitsordner LEMMA/LEMMA_Workspace/puls-amp-2021/intermediate/operation models/booking.xmi" importTypeName="OPERATION_NODES"/>
+  <infrastructureNodes name="MariaDB" imports="//@imports.0 //@imports.1" operationEnvironment="//@infrastructureNodes.0/@reference/@technology/@environment" qualifiedInfrastructureTechnologyName="MariaDB.MariaDB">
+    <defaultValues value="admin" technologySpecificProperty="//@infrastructureNodes.0/@reference/@technology/@properties.0"/>
+    <defaultValues value="maridb" technologySpecificProperty="//@infrastructureNodes.0/@reference/@technology/@properties.3"/>
+    <defaultValues value="password" technologySpecificProperty="//@infrastructureNodes.0/@reference/@technology/@properties.2"/>
+    <defaultValues value="password" technologySpecificProperty="//@infrastructureNodes.0/@reference/@technology/@properties.1"/>
+    <defaultValues value="dockerhub" technologySpecificProperty="//@infrastructureNodes.0/@reference/@technology/@properties.5"/>
+    <defaultValues value="3306" technologySpecificProperty="//@infrastructureNodes.0/@reference/@technology/@properties.4"/>
+    <defaultValues value="booking" technologySpecificProperty="//@infrastructureNodes.0/@reference/@technology/@properties.6"/>
+    <usedByNodes imported="true" name="BookingService" qualifiedTechnologyName="container_base.Kubernetes" import="//@imports.2"/>
+    <reference import="//@imports.1">
+      <technology name="MariaDB">
+        <environment environmentName="docker/mariadb:latest"/>
+        <properties name="userName" type="string"/>
+        <properties name="rootPassword" type="string">
+          <featureNames>MANDATORY</featureNames>
+        </properties>
+        <properties name="userPassword" type="string"/>
+        <properties name="hostName" type="string">
+          <featureNames>MANDATORY</featureNames>
+        </properties>
+        <properties name="port" type="string">
+          <featureNames>MANDATORY</featureNames>
+        </properties>
+        <properties name="imageType" type="string">
+          <featureNames>MANDATORY</featureNames>
+        </properties>
+        <properties name="dataBase" type="string">
+          <featureNames>MANDATORY</featureNames>
+        </properties>
+      </technology>
+    </reference>
+  </infrastructureNodes>
+</intermediate:IntermediateOperationModel>

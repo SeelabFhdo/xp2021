@@ -1,0 +1,120 @@
+version v01{
+	context Booking{
+		
+		//ParkBookingConcept
+		structure ParkBookingAggregate<entity>{
+			long bookingId<identifier>,
+			Booker booker,
+			ParkingSpace parkingSpace,
+			TimeSlot bookinTimeSlot,
+			float bookingPriceTotal,
+			boolean isCanceled
+		}
+		
+		//Repository for ParkBookings
+		structure ParkBookingRepository<repository>{
+			ParkBookingAggregate parkBookingAggregate,
+			long bookingId
+		}
+		
+		/* Entity object of a ParkBooking smart contract for storing its 
+		 * contract address / memory address which is necessary for later use after its deployment. */
+		structure ParkContractAggregate<entity>{
+			long smartContractId,
+			string contractAddress
+		}
+		
+		//Repository for deployed ParkBooking smart contracts
+		structure ParkContractRepository<repository>{
+			ParkContractAggregate parkContractAggregate,
+			string smartContractAddress
+		}
+		
+		//ParkAndChargeBookingConcept
+		structure ParkAndChargeBookingAggregate<entity>{
+			long bookingId<identifier>,
+			Booker bookerId,
+			ElectifiedParkingSpace electifiedParkingSpace, 
+			TimeSlot bookingTimeSlot,
+			float bookingPriceTotal,
+			boolean isCanceled,
+			int verifyCode
+		}
+		
+		//Repository for ParkAndChargeBookings
+		structure ParkAndChargeBookingRepository<repository>{
+			ParkAndChargeBookingAggregate parkBookingAggregate,
+			long bookingId
+		}
+		
+		/* Entity object of a ParkAndChargeBooking smart contract for storing its 
+		 * contract address / memory address which is necessary for later use after its deployment. */
+		structure ParkAndChargeContractAggregate<entity>{
+			long smartContractId,
+			string contractAddress
+		}
+		
+		//Repository for deployed ParkAndCharfBooking smart contracts
+		structure ParkAndChargeContractRepository<repository>{
+			ParkAndChargeContractAggregate parkAndChargeContractAggregate,
+			string smartContractAddress
+		}
+		
+		/*This structure containing all park booking attributes that can 
+		 * be stored and read within the Ethereum blockchain.*/
+		structure BlockchainDataParkBooking<valueObject>{
+			long bookingId,
+			long bookerId,
+			string parkingSpaceId,
+			string startOfBooking,
+			string endOfBooking,
+			float bookingPriceTotal
+		}
+		
+		/*This structure containing all park and charge booking attributes that can 
+		 * be stored and read within the Ethereum blockchain.*/
+		structure BlockchainDataParkAndChargeBooking<valueObject>{
+			long bookingId,
+			long bookerId,
+			string parkingSpaceId,
+			string startOfBooking,
+			string endOfBooking,
+			float bookingPriceTotal,
+			int verifyCode
+		}
+		
+		//Booker of a ParkBooking
+		structure Booker<valueObject>{
+			long bookerId,
+			string firstName,
+			string lastName
+		}
+		
+		//ParkingSpace of a ParkBooking
+		structure ParkingSpace<valueObject>{
+			string parkingSpaceId,
+			string city,
+			int postcode,
+			string street,
+			string streetNumber,
+			float bookingPricePerHour
+		}
+		
+		//ElectrifiedParkingSpace of a ParkBooking
+		structure ElectifiedParkingSpace<valueObject>{
+			string parkingSpaceId,
+			string city,
+			int postcode,
+			string street,
+			string streetNumber,
+			float bookingPricePerHour,
+			float chargingPricePerKwh
+		}
+		
+		//TimeSlot of a ParkBooking
+		structure TimeSlot<valueObject>{
+			date startOfBooking,
+			date endOfBooking
+		}
+	}
+}

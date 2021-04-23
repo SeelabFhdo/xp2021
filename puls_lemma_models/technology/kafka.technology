@@ -1,0 +1,12 @@
+technology Kafka {
+	infrastructure technologies {
+		Kafka {
+			operation environments="openjdk:11-jdk-slim";
+			service properties {
+				string bootstrapAddress<mandatory>;
+				string messageTopicName<mandatory>;
+				string groupId<mandatory>;
+			}
+		}
+	}
+}

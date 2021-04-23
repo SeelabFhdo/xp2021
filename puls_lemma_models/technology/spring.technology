@@ -1,0 +1,62 @@
+technology springcloud {
+    types {
+        primitive type Boolean based on boolean default;
+        primitive type Byte based on byte default;
+        primitive type Character based on char default;
+        primitive type Date based on date default;
+        primitive type Double based on double default;
+        primitive type Float based on float default;
+        primitive type Integer based on int default;
+        primitive type Long based on long default;
+        primitive type Short based on short default;
+        primitive type TestString based on string default;
+        primitive type Object based on unspecified default;
+    }
+
+    protocols {
+        sync rest data formats "application/json" default with format "application/json";
+        async mqtt data formats "application/xml" default with format "application/xml";
+        sync jdbc data formats "application/mysql" default with format "application/mysql";
+    }
+
+    service aspects {
+        aspect GetMapping for operations {
+            string value;
+        }
+
+        aspect PutMapping for operations {
+            string value;
+        }
+
+        aspect PostMapping for operations {
+            string value;
+        }
+
+        aspect DeleteMapping for operations {
+            string value;
+        }
+
+        aspect Produces for operations {
+            string value;
+        }
+
+        aspect Consums for operations {
+            string value;
+        }
+
+        aspect PathVariable for parameters {
+            string value;
+        }
+
+        aspect RequestBody for parameters {
+            string value;
+        }
+
+        aspect RequestParam for parameters {
+            selector(exchange_pattern = in);
+            string value;
+            boolean required = false;
+            string defaultValue = "";
+        }
+    }
+}

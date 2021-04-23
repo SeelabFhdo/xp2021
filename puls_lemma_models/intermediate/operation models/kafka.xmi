@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="ASCII"?>
+<intermediate:IntermediateOperationModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:intermediate="http://www.fhdo.de/lemma/operation/intermediate" sourceModelUri="file://C:/Users/Simon/Documents/Arbeitsordner LEMMA/puls-amp-2021/infrastructure/kafka.operation">
+  <imports name="kafka" importUri="file://C:/Users/Simon/Documents/Arbeitsordner LEMMA/puls-amp-2021/technology/kafka.technology" importTypeName="TECHNOLOGY"/>
+  <imports name="bookingService" importUri="file://C:/Users/Simon/Documents/Arbeitsordner LEMMA/LEMMA_Workspace/puls-amp-2021/intermediate/operation models/booking.xmi" importTypeName="OPERATION_NODES"/>
+  <infrastructureNodes name="Kafka" imports="//@imports.0" operationEnvironment="//@infrastructureNodes.0/@reference/@technology/@environment" qualifiedInfrastructureTechnologyName="Kafka.Kafka">
+    <defaultValues value="" technologySpecificProperty="//@infrastructureNodes.0/@reference/@technology/@properties.0"/>
+    <defaultValues value="" technologySpecificProperty="//@infrastructureNodes.0/@reference/@technology/@properties.2"/>
+    <defaultValues value="" technologySpecificProperty="//@infrastructureNodes.0/@reference/@technology/@properties.1"/>
+    <usedByNodes imported="true" name="BookingService" qualifiedTechnologyName="container_base.Kubernetes" import="//@imports.1"/>
+    <reference import="//@imports.0">
+      <technology name="Kafka">
+        <environment environmentName="openjdk:11-jdk-slim"/>
+        <properties name="bootstrapAddress" type="string">
+          <featureNames>MANDATORY</featureNames>
+        </properties>
+        <properties name="messageTopicName" type="string">
+          <featureNames>MANDATORY</featureNames>
+        </properties>
+        <properties name="groupId" type="string">
+          <featureNames>MANDATORY</featureNames>
+        </properties>
+      </technology>
+    </reference>
+  </infrastructureNodes>
+</intermediate:IntermediateOperationModel>

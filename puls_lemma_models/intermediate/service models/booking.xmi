@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="ASCII"?>
+<intermediate:IntermediateServiceModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:intermediate="http://www.fhdo.de/lemma/service/intermediate" xmlns:intermediate_1="http://www.fhdo.de/lemma/data/intermediate" sourceModelUri="file://C:/Users/Simon/Documents/Arbeitsordner LEMMA/puls-amp-2021/BookingService/booking.services">
+  <imports name="bookingData" importUri="file://C:/Users/Simon/Documents/Arbeitsordner LEMMA/puls-amp-2021/intermediate/data models/booking.xmi" importTypeName="DATATYPES"/>
+  <imports name="java" importUri="file://C:/Users/Simon/Documents/Arbeitsordner LEMMA/puls-amp-2021/technology/spring.technology" importTypeName="TECHNOLOGY"/>
+  <microservices sourceModelUri="file://C:/Users/Simon/Documents/Arbeitsordner LEMMA/puls-amp-2021/BookingService/booking.services" name="de.fhdo.puls.BookingService" version="v01" qualifiedName="v01.de.fhdo.puls.BookingService" type="FUNCTIONAL" visibility="PUBLIC" effectivelyImplemented="true">
+    <technologies name="java" import="//@imports.1"/>
+    <protocols communicationType="ASYNCHRONOUS" protocol="mqtt" dataFormat="application/xml"/>
+    <protocols communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json"/>
+    <interfaces name="ParkBookingApi" qualifiedName="v01.de.fhdo.puls.BookingService.ParkBookingApi" visibility="PUBLIC" hasImplementedOperations="true">
+      <endpoints communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json" technology="//@microservices.0/@technologies.0">
+        <addresses>/resources/v1</addresses>
+      </endpoints>
+      <protocols communicationType="ASYNCHRONOUS" protocol="mqtt" dataFormat="application/xml"/>
+      <protocols communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json"/>
+      <operations name="createParkBooking" qualifiedName="v01.de.fhdo.puls.BookingService.ParkBookingApi.createParkBooking" visibility="PUBLIC">
+        <endpoints communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json" technology="//@microservices.0/@technologies.0">
+          <addresses>/parkBooking</addresses>
+        </endpoints>
+        <protocols communicationType="ASYNCHRONOUS" protocol="mqtt" dataFormat="application/xml"/>
+        <protocols communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json"/>
+        <aspects name="PostMapping" qualifiedName="springcloud.PostMapping" import="//@imports.1">
+          <properties name="value" type="string"/>
+        </aspects>
+        <parameters name="parkBooking" qualifiedName="v01.de.fhdo.puls.BookingService.ParkBookingApi.createParkBooking.parkBooking" exchangePattern="IN" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="ParkBookingAggregate" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="v01.Booking.ParkBookingAggregate" import="//@imports.0"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="ParkBookingAggregate" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="v01.Booking.ParkBookingAggregate" import="//@imports.0"/>
+          <aspects name="RequestBody" qualifiedName="springcloud.RequestBody" import="//@imports.1">
+            <properties name="value" type="string"/>
+          </aspects>
+        </parameters>
+      </operations>
+      <operations name="readParkBooking" qualifiedName="v01.de.fhdo.puls.BookingService.ParkBookingApi.readParkBooking" visibility="PUBLIC">
+        <endpoints communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json" technology="//@microservices.0/@technologies.0">
+          <addresses>/parkBooking/{bookingId}</addresses>
+        </endpoints>
+        <protocols communicationType="ASYNCHRONOUS" protocol="mqtt" dataFormat="application/xml"/>
+        <protocols communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json"/>
+        <aspects name="GetMapping" qualifiedName="springcloud.GetMapping" import="//@imports.1">
+          <properties name="value" type="string"/>
+        </aspects>
+        <parameters name="bookingId" qualifiedName="v01.de.fhdo.puls.BookingService.ParkBookingApi.readParkBooking.bookingId" exchangePattern="IN" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="Long" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="springcloud._types.Long" import="//@imports.1"/>
+          <originalType xsi:type="intermediate_1:IntermediatePrimitiveType" name="long" origin="BUILTIN" kind="PRIMITIVE" size="64"/>
+          <aspects name="PathVariable" qualifiedName="springcloud.PathVariable" import="//@imports.1">
+            <properties name="value" type="string"/>
+            <propertyValues value="bookingId" property="//@microservices.0/@interfaces.0/@operations.1/@parameters.0/@aspects.0/@properties.0"/>
+          </aspects>
+        </parameters>
+        <parameters name="parBooking" qualifiedName="v01.de.fhdo.puls.BookingService.ParkBookingApi.readParkBooking.parBooking" exchangePattern="OUT" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="ParkBookingAggregate" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="v01.Booking.ParkBookingAggregate" import="//@imports.0"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="ParkBookingAggregate" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="v01.Booking.ParkBookingAggregate" import="//@imports.0"/>
+        </parameters>
+      </operations>
+      <operations name="readAllParkBookings" qualifiedName="v01.de.fhdo.puls.BookingService.ParkBookingApi.readAllParkBookings" visibility="PUBLIC">
+        <endpoints communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json" technology="//@microservices.0/@technologies.0">
+          <addresses>/parkBookings</addresses>
+        </endpoints>
+        <protocols communicationType="ASYNCHRONOUS" protocol="mqtt" dataFormat="application/xml"/>
+        <protocols communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json"/>
+        <aspects name="GetMapping" qualifiedName="springcloud.GetMapping" import="//@imports.1">
+          <properties name="value" type="string"/>
+        </aspects>
+        <parameters name="parkBookings" qualifiedName="v01.de.fhdo.puls.BookingService.ParkBookingApi.readAllParkBookings.parkBookings" exchangePattern="OUT" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="ParkBookingAggregate" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="v01.Booking.ParkBookingAggregate" import="//@imports.0"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="ParkBookingAggregate" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="v01.Booking.ParkBookingAggregate" import="//@imports.0"/>
+        </parameters>
+      </operations>
+      <operations name="readParkBookingBlockchainData" qualifiedName="v01.de.fhdo.puls.BookingService.ParkBookingApi.readParkBookingBlockchainData" visibility="PUBLIC">
+        <endpoints communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json" technology="//@microservices.0/@technologies.0">
+          <addresses>/parkBooking/blockchainQuery/{bookingId}</addresses>
+        </endpoints>
+        <protocols communicationType="ASYNCHRONOUS" protocol="mqtt" dataFormat="application/xml"/>
+        <protocols communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json"/>
+        <aspects name="GetMapping" qualifiedName="springcloud.GetMapping" import="//@imports.1">
+          <properties name="value" type="string"/>
+        </aspects>
+        <parameters name="booking" qualifiedName="v01.de.fhdo.puls.BookingService.ParkBookingApi.readParkBookingBlockchainData.booking" exchangePattern="IN" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="Long" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="springcloud._types.Long" import="//@imports.1"/>
+          <originalType xsi:type="intermediate_1:IntermediatePrimitiveType" name="long" origin="BUILTIN" kind="PRIMITIVE" size="64"/>
+          <aspects name="PathVariable" qualifiedName="springcloud.PathVariable" import="//@imports.1">
+            <properties name="value" type="string"/>
+            <propertyValues value="bookingId" property="//@microservices.0/@interfaces.0/@operations.3/@parameters.0/@aspects.0/@properties.0"/>
+          </aspects>
+        </parameters>
+        <parameters name="blockchainDataParkBooking" qualifiedName="v01.de.fhdo.puls.BookingService.ParkBookingApi.readParkBookingBlockchainData.blockchainDataParkBooking" exchangePattern="OUT" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="BlockchainDataParkBooking" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="v01.Booking.BlockchainDataParkBooking" import="//@imports.0"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="BlockchainDataParkBooking" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="v01.Booking.BlockchainDataParkBooking" import="//@imports.0"/>
+        </parameters>
+      </operations>
+      <operations name="readCurrentBookingsOfParkingSpace" qualifiedName="v01.de.fhdo.puls.BookingService.ParkBookingApi.readCurrentBookingsOfParkingSpace" visibility="PUBLIC">
+        <endpoints communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json" technology="//@microservices.0/@technologies.0">
+          <addresses>/parkBookings/{parkingSpaceId}</addresses>
+        </endpoints>
+        <protocols communicationType="ASYNCHRONOUS" protocol="mqtt" dataFormat="application/xml"/>
+        <protocols communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json"/>
+        <parameters name="parkingSpaceId" qualifiedName="v01.de.fhdo.puls.BookingService.ParkBookingApi.readCurrentBookingsOfParkingSpace.parkingSpaceId" exchangePattern="IN" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="Long" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="springcloud._types.Long" import="//@imports.1"/>
+          <originalType xsi:type="intermediate_1:IntermediatePrimitiveType" name="long" origin="BUILTIN" kind="PRIMITIVE" size="64"/>
+          <aspects name="PathVariable" qualifiedName="springcloud.PathVariable" import="//@imports.1">
+            <properties name="value" type="string"/>
+            <propertyValues value="parkingSpaceId" property="//@microservices.0/@interfaces.0/@operations.4/@parameters.0/@aspects.0/@properties.0"/>
+          </aspects>
+        </parameters>
+        <parameters name="parkBookings" qualifiedName="v01.de.fhdo.puls.BookingService.ParkBookingApi.readCurrentBookingsOfParkingSpace.parkBookings" exchangePattern="OUT" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="ParkBookingAggregate" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="v01.Booking.ParkBookingAggregate" import="//@imports.0"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="ParkBookingAggregate" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="v01.Booking.ParkBookingAggregate" import="//@imports.0"/>
+        </parameters>
+      </operations>
+      <operations name="readCanceledBookingsOfParkingSpace" qualifiedName="v01.de.fhdo.puls.BookingService.ParkBookingApi.readCanceledBookingsOfParkingSpace" visibility="PUBLIC">
+        <endpoints communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json" technology="//@microservices.0/@technologies.0">
+          <addresses>/canceledParkBookings/{parkingSpaceId}</addresses>
+        </endpoints>
+        <protocols communicationType="ASYNCHRONOUS" protocol="mqtt" dataFormat="application/xml"/>
+        <protocols communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json"/>
+        <parameters name="parkingSpaceId" qualifiedName="v01.de.fhdo.puls.BookingService.ParkBookingApi.readCanceledBookingsOfParkingSpace.parkingSpaceId" exchangePattern="IN" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="Long" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="springcloud._types.Long" import="//@imports.1"/>
+          <originalType xsi:type="intermediate_1:IntermediatePrimitiveType" name="long" origin="BUILTIN" kind="PRIMITIVE" size="64"/>
+        </parameters>
+        <parameters name="parkBookings" qualifiedName="v01.de.fhdo.puls.BookingService.ParkBookingApi.readCanceledBookingsOfParkingSpace.parkBookings" exchangePattern="OUT" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="ParkBookingAggregate" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="v01.Booking.ParkBookingAggregate" import="//@imports.0"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="ParkBookingAggregate" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="v01.Booking.ParkBookingAggregate" import="//@imports.0"/>
+        </parameters>
+      </operations>
+      <operations name="updateParkBooking" qualifiedName="v01.de.fhdo.puls.BookingService.ParkBookingApi.updateParkBooking" visibility="PUBLIC">
+        <endpoints communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json" technology="//@microservices.0/@technologies.0">
+          <addresses>/parkBooking</addresses>
+        </endpoints>
+        <protocols communicationType="ASYNCHRONOUS" protocol="mqtt" dataFormat="application/xml"/>
+        <protocols communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json"/>
+        <aspects name="PutMapping" qualifiedName="springcloud.PutMapping" import="//@imports.1">
+          <properties name="value" type="string"/>
+        </aspects>
+        <parameters name="parkBooking" qualifiedName="v01.de.fhdo.puls.BookingService.ParkBookingApi.updateParkBooking.parkBooking" exchangePattern="IN" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="ParkBookingAggregate" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="v01.Booking.ParkBookingAggregate" import="//@imports.0"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="ParkBookingAggregate" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="v01.Booking.ParkBookingAggregate" import="//@imports.0"/>
+          <aspects name="RequestBody" qualifiedName="springcloud.RequestBody" import="//@imports.1">
+            <properties name="value" type="string"/>
+          </aspects>
+        </parameters>
+      </operations>
+      <operations name="deletParkBooking" qualifiedName="v01.de.fhdo.puls.BookingService.ParkBookingApi.deletParkBooking" visibility="PUBLIC">
+        <endpoints communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json" technology="//@microservices.0/@technologies.0">
+          <addresses>/parkBooking</addresses>
+        </endpoints>
+        <protocols communicationType="ASYNCHRONOUS" protocol="mqtt" dataFormat="application/xml"/>
+        <protocols communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json"/>
+        <aspects name="DeleteMapping" qualifiedName="springcloud.DeleteMapping" import="//@imports.1">
+          <properties name="value" type="string"/>
+        </aspects>
+        <parameters name="parkBooking" qualifiedName="v01.de.fhdo.puls.BookingService.ParkBookingApi.deletParkBooking.parkBooking" exchangePattern="IN" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="ParkBookingAggregate" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="v01.Booking.ParkBookingAggregate" import="//@imports.0"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="ParkBookingAggregate" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="v01.Booking.ParkBookingAggregate" import="//@imports.0"/>
+          <aspects name="RequestBody" qualifiedName="springcloud.RequestBody" import="//@imports.1">
+            <properties name="value" type="string"/>
+          </aspects>
+        </parameters>
+      </operations>
+    </interfaces>
+    <interfaces name="ParkAndChargeBookingApi" qualifiedName="v01.de.fhdo.puls.BookingService.ParkAndChargeBookingApi" visibility="PUBLIC" hasImplementedOperations="true">
+      <endpoints communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json" technology="//@microservices.0/@technologies.0">
+        <addresses>/resources/v1</addresses>
+      </endpoints>
+      <protocols communicationType="ASYNCHRONOUS" protocol="mqtt" dataFormat="application/xml"/>
+      <protocols communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json"/>
+      <operations name="createParkAndChargeBooking" qualifiedName="v01.de.fhdo.puls.BookingService.ParkAndChargeBookingApi.createParkAndChargeBooking" visibility="PUBLIC">
+        <endpoints communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json" technology="//@microservices.0/@technologies.0">
+          <addresses>/parkAndChargeBooking</addresses>
+        </endpoints>
+        <protocols communicationType="ASYNCHRONOUS" protocol="mqtt" dataFormat="application/xml"/>
+        <protocols communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json"/>
+        <aspects name="PostMapping" qualifiedName="springcloud.PostMapping" import="//@imports.1">
+          <properties name="value" type="string"/>
+        </aspects>
+        <parameters name="parkAndChargeBooking" qualifiedName="v01.de.fhdo.puls.BookingService.ParkAndChargeBookingApi.createParkAndChargeBooking.parkAndChargeBooking" exchangePattern="IN" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="ParkAndChargeBookingAggregate" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="v01.Booking.ParkAndChargeBookingAggregate" import="//@imports.0"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="ParkAndChargeBookingAggregate" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="v01.Booking.ParkAndChargeBookingAggregate" import="//@imports.0"/>
+          <aspects name="RequestBody" qualifiedName="springcloud.RequestBody" import="//@imports.1">
+            <properties name="value" type="string"/>
+          </aspects>
+        </parameters>
+      </operations>
+      <operations name="readParkAndChargeBooking" qualifiedName="v01.de.fhdo.puls.BookingService.ParkAndChargeBookingApi.readParkAndChargeBooking" visibility="PUBLIC">
+        <endpoints communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json" technology="//@microservices.0/@technologies.0">
+          <addresses>/parkAndChargeBooking/{bookingId}</addresses>
+        </endpoints>
+        <protocols communicationType="ASYNCHRONOUS" protocol="mqtt" dataFormat="application/xml"/>
+        <protocols communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json"/>
+        <aspects name="GetMapping" qualifiedName="springcloud.GetMapping" import="//@imports.1">
+          <properties name="value" type="string"/>
+        </aspects>
+        <parameters name="bookingId" qualifiedName="v01.de.fhdo.puls.BookingService.ParkAndChargeBookingApi.readParkAndChargeBooking.bookingId" exchangePattern="IN" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="Long" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="springcloud._types.Long" import="//@imports.1"/>
+          <originalType xsi:type="intermediate_1:IntermediatePrimitiveType" name="long" origin="BUILTIN" kind="PRIMITIVE" size="64"/>
+          <aspects name="PathVariable" qualifiedName="springcloud.PathVariable" import="//@imports.1">
+            <properties name="value" type="string"/>
+            <propertyValues value="bookingId" property="//@microservices.0/@interfaces.1/@operations.1/@parameters.0/@aspects.0/@properties.0"/>
+          </aspects>
+        </parameters>
+        <parameters name="parkAndChargeBooking" qualifiedName="v01.de.fhdo.puls.BookingService.ParkAndChargeBookingApi.readParkAndChargeBooking.parkAndChargeBooking" exchangePattern="OUT" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="ParkAndChargeBookingAggregate" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="v01.Booking.ParkAndChargeBookingAggregate" import="//@imports.0"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="ParkAndChargeBookingAggregate" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="v01.Booking.ParkAndChargeBookingAggregate" import="//@imports.0"/>
+        </parameters>
+      </operations>
+      <operations name="readAllParkAndChargeBookings" qualifiedName="v01.de.fhdo.puls.BookingService.ParkAndChargeBookingApi.readAllParkAndChargeBookings" visibility="PUBLIC">
+        <endpoints communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json" technology="//@microservices.0/@technologies.0">
+          <addresses>/parkAndChargeBookings</addresses>
+        </endpoints>
+        <protocols communicationType="ASYNCHRONOUS" protocol="mqtt" dataFormat="application/xml"/>
+        <protocols communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json"/>
+        <aspects name="GetMapping" qualifiedName="springcloud.GetMapping" import="//@imports.1">
+          <properties name="value" type="string"/>
+        </aspects>
+        <parameters name="parkAndChargeBookings" qualifiedName="v01.de.fhdo.puls.BookingService.ParkAndChargeBookingApi.readAllParkAndChargeBookings.parkAndChargeBookings" exchangePattern="OUT" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="ParkAndChargeBookingAggregate" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="v01.Booking.ParkAndChargeBookingAggregate" import="//@imports.0"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="ParkAndChargeBookingAggregate" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="v01.Booking.ParkAndChargeBookingAggregate" import="//@imports.0"/>
+        </parameters>
+      </operations>
+      <operations name="readParkAndParkBookingBlockchainData" qualifiedName="v01.de.fhdo.puls.BookingService.ParkAndChargeBookingApi.readParkAndParkBookingBlockchainData" visibility="PUBLIC">
+        <endpoints communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json" technology="//@microservices.0/@technologies.0">
+          <addresses>/parkAndChargeBooking/blockchainQuery/{bookingId}</addresses>
+        </endpoints>
+        <protocols communicationType="ASYNCHRONOUS" protocol="mqtt" dataFormat="application/xml"/>
+        <protocols communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json"/>
+        <aspects name="GetMapping" qualifiedName="springcloud.GetMapping" import="//@imports.1">
+          <properties name="value" type="string"/>
+        </aspects>
+        <parameters name="booking" qualifiedName="v01.de.fhdo.puls.BookingService.ParkAndChargeBookingApi.readParkAndParkBookingBlockchainData.booking" exchangePattern="IN" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="Long" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="springcloud._types.Long" import="//@imports.1"/>
+          <originalType xsi:type="intermediate_1:IntermediatePrimitiveType" name="long" origin="BUILTIN" kind="PRIMITIVE" size="64"/>
+          <aspects name="PathVariable" qualifiedName="springcloud.PathVariable" import="//@imports.1">
+            <properties name="value" type="string"/>
+            <propertyValues value="bookingId" property="//@microservices.0/@interfaces.1/@operations.3/@parameters.0/@aspects.0/@properties.0"/>
+          </aspects>
+        </parameters>
+        <parameters name="blockchainDataParkAndChargeBooking" qualifiedName="v01.de.fhdo.puls.BookingService.ParkAndChargeBookingApi.readParkAndParkBookingBlockchainData.blockchainDataParkAndChargeBooking" exchangePattern="OUT" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="BlockchainDataParkAndChargeBooking" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="v01.Booking.BlockchainDataParkAndChargeBooking" import="//@imports.0"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="BlockchainDataParkAndChargeBooking" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="v01.Booking.BlockchainDataParkAndChargeBooking" import="//@imports.0"/>
+        </parameters>
+      </operations>
+      <operations name="readCurrentBookingsOfParkingSpace" qualifiedName="v01.de.fhdo.puls.BookingService.ParkAndChargeBookingApi.readCurrentBookingsOfParkingSpace" visibility="PUBLIC">
+        <endpoints communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json" technology="//@microservices.0/@technologies.0">
+          <addresses>/parkAndChargeBookings/{parkingSpaceId}</addresses>
+        </endpoints>
+        <protocols communicationType="ASYNCHRONOUS" protocol="mqtt" dataFormat="application/xml"/>
+        <protocols communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json"/>
+        <parameters name="parkingSpaceId" qualifiedName="v01.de.fhdo.puls.BookingService.ParkAndChargeBookingApi.readCurrentBookingsOfParkingSpace.parkingSpaceId" exchangePattern="IN" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="Long" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="springcloud._types.Long" import="//@imports.1"/>
+          <originalType xsi:type="intermediate_1:IntermediatePrimitiveType" name="long" origin="BUILTIN" kind="PRIMITIVE" size="64"/>
+          <aspects name="PathVariable" qualifiedName="springcloud.PathVariable" import="//@imports.1">
+            <properties name="value" type="string"/>
+            <propertyValues value="parkingSpaceId" property="//@microservices.0/@interfaces.1/@operations.4/@parameters.0/@aspects.0/@properties.0"/>
+          </aspects>
+        </parameters>
+        <parameters name="parkAndChargeBookings" qualifiedName="v01.de.fhdo.puls.BookingService.ParkAndChargeBookingApi.readCurrentBookingsOfParkingSpace.parkAndChargeBookings" exchangePattern="OUT" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="ParkAndChargeBookingAggregate" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="v01.Booking.ParkAndChargeBookingAggregate" import="//@imports.0"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="ParkAndChargeBookingAggregate" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="v01.Booking.ParkAndChargeBookingAggregate" import="//@imports.0"/>
+        </parameters>
+      </operations>
+      <operations name="readCanceledBookingsOfParkingSpace" qualifiedName="v01.de.fhdo.puls.BookingService.ParkAndChargeBookingApi.readCanceledBookingsOfParkingSpace" visibility="PUBLIC">
+        <endpoints communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json" technology="//@microservices.0/@technologies.0">
+          <addresses>/canceledParkAndChargeBookings/{parkingSpaceId}</addresses>
+        </endpoints>
+        <protocols communicationType="ASYNCHRONOUS" protocol="mqtt" dataFormat="application/xml"/>
+        <protocols communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json"/>
+        <parameters name="parkingSpaceId" qualifiedName="v01.de.fhdo.puls.BookingService.ParkAndChargeBookingApi.readCanceledBookingsOfParkingSpace.parkingSpaceId" exchangePattern="IN" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="Long" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="springcloud._types.Long" import="//@imports.1"/>
+          <originalType xsi:type="intermediate_1:IntermediatePrimitiveType" name="long" origin="BUILTIN" kind="PRIMITIVE" size="64"/>
+        </parameters>
+        <parameters name="parkAndChargeBookings" qualifiedName="v01.de.fhdo.puls.BookingService.ParkAndChargeBookingApi.readCanceledBookingsOfParkingSpace.parkAndChargeBookings" exchangePattern="OUT" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="ParkAndChargeBookingAggregate" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="v01.Booking.ParkAndChargeBookingAggregate" import="//@imports.0"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="ParkAndChargeBookingAggregate" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="v01.Booking.ParkAndChargeBookingAggregate" import="//@imports.0"/>
+        </parameters>
+      </operations>
+      <operations name="updateParkAndChargeBooking" qualifiedName="v01.de.fhdo.puls.BookingService.ParkAndChargeBookingApi.updateParkAndChargeBooking" visibility="PUBLIC">
+        <endpoints communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json" technology="//@microservices.0/@technologies.0">
+          <addresses>/parkAndChargeBooking</addresses>
+        </endpoints>
+        <protocols communicationType="ASYNCHRONOUS" protocol="mqtt" dataFormat="application/xml"/>
+        <protocols communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json"/>
+        <aspects name="PutMapping" qualifiedName="springcloud.PutMapping" import="//@imports.1">
+          <properties name="value" type="string"/>
+        </aspects>
+        <parameters name="parkAndChargeBooking" qualifiedName="v01.de.fhdo.puls.BookingService.ParkAndChargeBookingApi.updateParkAndChargeBooking.parkAndChargeBooking" exchangePattern="IN" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="ParkAndChargeBookingAggregate" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="v01.Booking.ParkAndChargeBookingAggregate" import="//@imports.0"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="ParkAndChargeBookingAggregate" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="v01.Booking.ParkAndChargeBookingAggregate" import="//@imports.0"/>
+          <aspects name="RequestBody" qualifiedName="springcloud.RequestBody" import="//@imports.1">
+            <properties name="value" type="string"/>
+          </aspects>
+        </parameters>
+      </operations>
+      <operations name="deletParkAndChargeBooking" qualifiedName="v01.de.fhdo.puls.BookingService.ParkAndChargeBookingApi.deletParkAndChargeBooking" visibility="PUBLIC">
+        <endpoints communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json" technology="//@microservices.0/@technologies.0">
+          <addresses>/parkAndChargeBooking</addresses>
+        </endpoints>
+        <protocols communicationType="ASYNCHRONOUS" protocol="mqtt" dataFormat="application/xml"/>
+        <protocols communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json"/>
+        <aspects name="DeleteMapping" qualifiedName="springcloud.DeleteMapping" import="//@imports.1">
+          <properties name="value" type="string"/>
+        </aspects>
+        <parameters name="parkAndChargeBooking" qualifiedName="v01.de.fhdo.puls.BookingService.ParkAndChargeBookingApi.deletParkAndChargeBooking.parkAndChargeBooking" exchangePattern="IN" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="ParkAndChargeBookingAggregate" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="v01.Booking.ParkAndChargeBookingAggregate" import="//@imports.0"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="ParkAndChargeBookingAggregate" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="v01.Booking.ParkAndChargeBookingAggregate" import="//@imports.0"/>
+          <aspects name="RequestBody" qualifiedName="springcloud.RequestBody" import="//@imports.1">
+            <properties name="value" type="string"/>
+          </aspects>
+        </parameters>
+      </operations>
+    </interfaces>
+  </microservices>
+</intermediate:IntermediateServiceModel>

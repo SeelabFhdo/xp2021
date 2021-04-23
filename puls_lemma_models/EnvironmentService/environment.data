@@ -1,0 +1,82 @@
+version v01 { 
+	context Environment{
+		
+		structure EnvironmentSensorUnitAggregate<entity> {
+			string id<identifier>,
+			string name,
+			long sensorBoxId,
+			string description,
+			SensorUnitStatus status,
+			Location location,
+			date createdDate,
+			date lastModifiedDate,
+			SensorType sensorType
+		}
+		
+		structure EnvironmentSensorUnitRepository<repository>{
+			EnvironmentSensorUnitAggregate environmentSensorUnitAggregate,
+			string id
+		}
+		
+		structure Location<valueObject>{
+			float longitude,
+        	float latitude
+		}
+	
+		structure ReceivedDataSet<valueObject>{
+			string sensorId,
+			date receivedTimeStamp,
+			float particulate2,
+			float particulate10,
+			int light,
+			float temperature,
+			float humidity
+		}
+	
+		structure SensorInformationSet<entity>{
+			string id<identifier>,
+			string name,
+			long sensorBoxId,
+			RecivedDataSetList receivedDataSetList
+		}
+		
+		structure SensorInformationSetRepository<repository>{
+			SensorInformationSet sensorInformationSet,
+			string id
+		}
+		
+		list RecivedDataSetList{ReceivedDataSet receivedDataSet}
+		
+		enum SensorType {
+			PHYSICAL,
+			VIRTUAL
+		}
+		
+		enum SensorUnitStatus {
+			ACTIVE,
+			DEACIVATED
+		}
+		
+		structure SensorValue<valueObject>{
+			string value,
+			date timestamp
+		}
+		
+		list SensorValueList {SensorValue v}
+		
+		structure EnvironmentInformation<entity>{
+			string id<identifier>,
+			long sensorBoxId,
+			SensorValueList particulate2Data,
+			SensorValueList particulate10Data,
+			SensorValueList lightData,
+			SensorValueList temperaturData,
+			SensorValueList humidityData
+		}
+		
+		structure EnvironmentInformationRepository <repository>{
+			EnvironmentInformation environmentInformation,
+			string id
+		}
+	}	
+}

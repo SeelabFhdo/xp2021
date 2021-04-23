@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="ASCII"?>
+<intermediate:IntermediateOperationModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:intermediate="http://www.fhdo.de/lemma/operation/intermediate" sourceModelUri="file://C:/Users/Simon/Documents/Arbeitsordner LEMMA/puls-amp-2021/infrastructure/mongodb.operation">
+  <imports name="container_base" importUri="file://C:/Users/Simon/Documents/Arbeitsordner LEMMA/puls-amp-2021/technology/container_base.technology" importTypeName="TECHNOLOGY"/>
+  <imports name="mongodb" importUri="file://C:/Users/Simon/Documents/Arbeitsordner LEMMA/puls-amp-2021/technology/mongodb.technology" importTypeName="TECHNOLOGY"/>
+  <imports name="environmentService" importUri="file://C:/Users/Simon/Documents/Arbeitsordner LEMMA/LEMMA_Workspace/puls-amp-2021/intermediate/operation models/environment.xmi" importTypeName="OPERATION_NODES"/>
+  <imports name="parkAndChargeService" importUri="file://C:/Users/Simon/Documents/Arbeitsordner LEMMA/LEMMA_Workspace/puls-amp-2021/intermediate/operation models/parkAndCharge.xmi" importTypeName="OPERATION_NODES"/>
+  <infrastructureNodes name="MongoDB" imports="//@imports.0 //@imports.1" operationEnvironment="//@infrastructureNodes.0/@reference/@technology/@environment" qualifiedInfrastructureTechnologyName="MongoDB.MongoDB">
+    <defaultValues value="root" technologySpecificProperty="//@infrastructureNodes.0/@reference/@technology/@properties.0"/>
+    <defaultValues value="password" technologySpecificProperty="//@infrastructureNodes.0/@reference/@technology/@properties.1"/>
+    <defaultValues value="parkAndCharge" technologySpecificProperty="//@infrastructureNodes.0/@reference/@technology/@properties.3"/>
+    <defaultValues value="DockerHub" technologySpecificProperty="//@infrastructureNodes.0/@reference/@technology/@properties.4"/>
+    <defaultValues value="27017" technologySpecificProperty="//@infrastructureNodes.0/@reference/@technology/@properties.2"/>
+    <usedByNodes imported="true" name="EnvironmentService" qualifiedTechnologyName="container_base.Kubernetes" import="//@imports.2"/>
+    <usedByNodes imported="true" name="ParkAndChargeService" qualifiedTechnologyName="container_base.Kubernetes" import="//@imports.3"/>
+    <reference import="//@imports.1">
+      <technology name="MongoDB">
+        <environment environmentName="docker/mongo:latest"/>
+        <properties name="userName" type="string"/>
+        <properties name="password" type="string"/>
+        <properties name="port" type="int">
+          <featureNames>MANDATORY</featureNames>
+        </properties>
+        <properties name="database" type="string">
+          <featureNames>MANDATORY</featureNames>
+        </properties>
+        <properties name="imageType" type="string">
+          <featureNames>MANDATORY</featureNames>
+        </properties>
+      </technology>
+    </reference>
+  </infrastructureNodes>
+</intermediate:IntermediateOperationModel>

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>de.fhdo.lemma.model_processing.code_generation.ethereum.properties</groupId>
+    <artifactId>de.fhdo.lemma.model_processing.code_generation.ethereum.properties</artifactId>
+    <version>0.8.0-SNAPSHOT</version>
+    <name>Ethereum Property Generator</name>
+    <description>A LEMMA code generator for Ethereum properties.</description>
+
+
+    <properties>
+        <java.version>11</java.version>
+        <maven.compiler.version>3.8.1</maven.compiler.version>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
+        <lemma.version>0.8.0-SNAPSHOT</lemma.version>
+    </properties>
+
+
+
+    <dependencies>
+        <dependency>
+            <groupId>de.fhdo.lemma.model_processing.code_generation.container_base</groupId>
+            <artifactId>de.fhdo.lemma.model_processing.code_generation.container_base</artifactId>
+            <version>${lemma.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>de.fhdo.lemma.model_processing</groupId>
+            <artifactId>de.fhdo.lemma.model_processing</artifactId>
+            <version>${lemma.version}</version>
+            <classifier>all-dependencies</classifier>
+        </dependency>
+        <dependency>
+            <groupId>de.fhdo.lemma.operationdsl</groupId>
+            <artifactId>de.fhdo.lemma.operationdsl</artifactId>
+            <version>${lemma.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>de.fhdo.lemma.data.datadsl</groupId>
+            <artifactId>de.fhdo.lemma.data.datadsl.metamodel</artifactId>
+            <version>${lemma.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>de.fhdo.lemma.servicedsl</groupId>
+            <artifactId>de.fhdo.lemma.servicedsl.metamodel</artifactId>
+            <version>${lemma.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>de.fhdo.lemma.technology.technologydsl</groupId>
+            <artifactId>de.fhdo.lemma.technology.technologydsl.metamodel</artifactId>
+            <version>${lemma.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>de.fhdo.lemma.servicedsl</groupId>
+            <artifactId>de.fhdo.lemma.servicedsl</artifactId>
+            <version>${lemma.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>de.fhdo.lemma.data.datadsl</groupId>
+            <artifactId>de.fhdo.lemma.data.datadsl</artifactId>
+            <version>${lemma.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>de.fhdo.lemma.technology.technologydsl</groupId>
+            <artifactId>de.fhdo.lemma.technology.technologydsl</artifactId>
+            <version>${lemma.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>de.fhdo.lemma.intermediate</groupId>
+            <artifactId>de.fhdo.lemma.operation.intermediate.metamodel</artifactId>
+            <version>${lemma.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>de.fhdo.lemma</groupId>
+            <artifactId>de.fhdo.lemma.utils</artifactId>
+            <version>${lemma.version}</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven.compiler.version}</version>
+            </plugin>
+        </plugins>
+    </build>
+
+
+</project>

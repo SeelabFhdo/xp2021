@@ -1,0 +1,133 @@
+import datatypes from "environment.data" as environmentData
+import technology from "../technology/spring.technology" as java
+
+@technology(java)
+public functional microservice de.fhdo.puls.EnvironmentService version v01{
+	
+	//Interface for CRUD-Methods of EnvironmentSensorUnits
+	@endpoints(java::_protocols.rest: "/resources/v1";)
+	interface EnvironmentSensorUnitApi{
+		
+		@endpoints(java::_protocols.rest: "/environmentSensorUnit";)
+		@java::_aspects.PostMapping
+		public createEnvironmentSensorUnit(
+			@java::_aspects.RequestBody
+			sync in environmentSensorUnit : environmentData::v01.Environment.EnvironmentSensorUnitAggregate
+		);
+		
+		@endpoints(java::_protocols.rest: "/environmentSensorUnit/name/{name}";)
+		@java::_aspects.GetMapping
+		public getEnvironmentSensorUnitByName(
+			@java::_aspects.PathVariable(value="name")
+			sync in name : string,
+			sync out environmentSensorUnit : environmentData::v01.Environment.EnvironmentSensorUnitAggregate  
+		);
+		
+		@endpoints(java::_protocols.rest: "/environmentSensorUnit/sensorBoxId/{sensorBoxId}";)
+		@java::_aspects.GetMapping
+		public getEnvironmentSensorUnitBySensorBoxId(
+			@java::_aspects.PathVariable(value="sensorBoxId")
+			sync in sensorBoxId : long,
+			sync out environmentSensorUnit : environmentData::v01.Environment.EnvironmentSensorUnitAggregate 
+		);
+		
+		@endpoints(java::_protocols.rest: "/environmentSensorUnits";)
+		@java::_aspects.GetMapping
+		public getEnvironmentSensorUnits(
+			sync out environmentSensorUnits : environmentData::v01.Environment.EnvironmentSensorUnitAggregate 
+		);	
+		
+	}
+	
+	//Interface for Read-Methods of EnvironmentSensorInformations
+	@endpoints(java::_protocols.rest: "/resources/v1";)
+	interface EnvironmentSensorInformationApi{
+		
+		@endpoints(java::_protocols.rest: "/environmentInformation/{sensorBoxId}/{sensor}/latest";)
+		@java::_aspects.GetMapping
+		public getLatestSensorValue(
+			@java::_aspects.PathVariable(value="sensorBoxId")
+			sync in sensorBoxId : long,
+			@java::_aspects.PathVariable(value="sensor")
+			sync in sensor : string,
+			sync out latestSensorValue : environmentData::v01.Environment.SensorValue
+		);
+		
+		@endpoints(java::_protocols.rest: "/environmentInformation/{sensorBoxId}/{sensor}/{numberOfValues}";)
+		@java::_aspects.GetMapping
+		public getSensorValue(
+			@java::_aspects.PathVariable(value="sensorBoxId")
+			sync in sensorBoxId : long,
+			@java::_aspects.PathVariable(value="sensor")
+			sync in sensor : string,
+			@java::_aspects.PathVariable(value="numberOfValues")
+			sync in numberOfValues : int,
+			sync out sensorValue : environmentData::v01.Environment.SensorValue
+		);
+		
+		@endpoints(java::_protocols.rest: "/environmentInformation/sensorBoxId/{sensorBoxId}/measurementTypes";)
+		@java::_aspects.GetMapping
+		public getSensorMeasurementTypes(
+			@java::_aspects.PathVariable(value="sensorBoxId")
+			sync in sensorBoxId : long,
+			sync out sensorMeasurementTypes : string
+		);
+		
+	}
+	
+	//Interface for Read-Methods of EnvironmentInformations
+	@endpoints(java::_protocols.rest: "/resources/v1";)
+	interface EnvironmentInformationApi{
+		
+		@endpoints(java::_protocols.rest: "/environmentInformation/{id}";)
+		@java::_aspects.GetMapping
+		public getEnvironmentInformation(
+			@java::_aspects.PathVariable(value="id")
+			sync in id : long,
+			sync out environmentInformation : environmentData::v01.Environment.EnvironmentInformation
+		);
+		
+		@endpoints(java::_protocols.rest: "/environmentInformation/{id}/particulate2";)
+		@java::_aspects.GetMapping
+		public getParticulate2Information(
+			@java::_aspects.PathVariable(value="id")
+			sync in id : long,
+			sync out particulate2Information : environmentData::v01.Environment.SensorValue
+		);
+		
+		@endpoints(java::_protocols.rest: "/environmentInformation/{id}/particulate10";)
+		@java::_aspects.GetMapping
+		public getParticulate10Information(
+			@java::_aspects.PathVariable(value="id")
+			sync in id : long,
+			sync out particulate10Information : environmentData::v01.Environment.SensorValue
+		);
+		
+		@endpoints(java::_protocols.rest: "/environmentInformation/{id}/light";)
+		@java::_aspects.GetMapping
+		public getLightInformation(
+			@java::_aspects.PathVariable(value="id")
+			sync in id : long,
+			sync out lightInformation : environmentData::v01.Environment.SensorValue
+		);
+		
+		@endpoints(java::_protocols.rest: "/environmentInformation/{id}/temperature";)
+		@java::_aspects.GetMapping
+		public getTemperatureInformation(
+			@java::_aspects.PathVariable(value="id")
+			sync in id : long,
+			sync out temperatoreInformation : environmentData::v01.Environment.SensorValue
+		);
+		
+		@endpoints(java::_protocols.rest: "/environmentInformation/{id}/humidity";)
+		@java::_aspects.GetMapping
+		public getHumidityInformation(
+			@java::_aspects.PathVariable(value="id")
+			sync in id : long,
+			sync out humidityInformation : environmentData::v01.Environment.SensorValue
+		);
+		
+	} 
+	
+	
+}

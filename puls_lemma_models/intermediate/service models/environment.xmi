@@ -1,0 +1,328 @@
+<?xml version="1.0" encoding="ASCII"?>
+<intermediate:IntermediateServiceModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:intermediate="http://www.fhdo.de/lemma/service/intermediate" xmlns:intermediate_1="http://www.fhdo.de/lemma/data/intermediate" sourceModelUri="file://C:/Users/Simon/Documents/Arbeitsordner LEMMA/puls-amp-2021/EnvironmentService/environment.services">
+  <imports name="environmentData" importUri="file://C:/Users/Simon/Documents/Arbeitsordner LEMMA/puls-amp-2021/EnvironmentService/environment.data" importTypeName="DATATYPES"/>
+  <imports name="java" importUri="file://C:/Users/Simon/Documents/Arbeitsordner LEMMA/puls-amp-2021/technology/spring.technology" importTypeName="TECHNOLOGY"/>
+  <microservices sourceModelUri="file://C:/Users/Simon/Documents/Arbeitsordner LEMMA/puls-amp-2021/EnvironmentService/environment.services" name="de.fhdo.puls.EnvironmentService" version="v01" qualifiedName="v01.de.fhdo.puls.EnvironmentService" type="FUNCTIONAL" visibility="PUBLIC" effectivelyImplemented="true">
+    <technologies name="java" import="//@imports.1"/>
+    <protocols communicationType="ASYNCHRONOUS" protocol="mqtt" dataFormat="application/xml"/>
+    <protocols communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json"/>
+    <interfaces name="EnvironmentSensorUnitApi" qualifiedName="v01.de.fhdo.puls.EnvironmentService.EnvironmentSensorUnitApi" visibility="PUBLIC" hasImplementedOperations="true">
+      <endpoints communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json" technology="//@microservices.0/@technologies.0">
+        <addresses>/resources/v1</addresses>
+      </endpoints>
+      <protocols communicationType="ASYNCHRONOUS" protocol="mqtt" dataFormat="application/xml"/>
+      <protocols communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json"/>
+      <operations name="createEnvironmentSensorUnit" qualifiedName="v01.de.fhdo.puls.EnvironmentService.EnvironmentSensorUnitApi.createEnvironmentSensorUnit" visibility="PUBLIC">
+        <endpoints communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json" technology="//@microservices.0/@technologies.0">
+          <addresses>/environmentSensorUnit</addresses>
+        </endpoints>
+        <protocols communicationType="ASYNCHRONOUS" protocol="mqtt" dataFormat="application/xml"/>
+        <protocols communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json"/>
+        <aspects name="PostMapping" qualifiedName="springcloud.PostMapping" import="//@imports.1">
+          <properties name="value" type="string"/>
+        </aspects>
+        <parameters name="environmentSensorUnit" qualifiedName="v01.de.fhdo.puls.EnvironmentService.EnvironmentSensorUnitApi.createEnvironmentSensorUnit.environmentSensorUnit" exchangePattern="IN" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="EnvironmentSensorUnitAggregate" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="v01.Environment.EnvironmentSensorUnitAggregate" import="//@imports.0"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="EnvironmentSensorUnitAggregate" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="v01.Environment.EnvironmentSensorUnitAggregate" import="//@imports.0"/>
+          <aspects name="RequestBody" qualifiedName="springcloud.RequestBody" import="//@imports.1">
+            <properties name="value" type="string"/>
+          </aspects>
+        </parameters>
+      </operations>
+      <operations name="getEnvironmentSensorUnitByName" qualifiedName="v01.de.fhdo.puls.EnvironmentService.EnvironmentSensorUnitApi.getEnvironmentSensorUnitByName" visibility="PUBLIC">
+        <endpoints communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json" technology="//@microservices.0/@technologies.0">
+          <addresses>/environmentSensorUnit/name/{name}</addresses>
+        </endpoints>
+        <protocols communicationType="ASYNCHRONOUS" protocol="mqtt" dataFormat="application/xml"/>
+        <protocols communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json"/>
+        <aspects name="GetMapping" qualifiedName="springcloud.GetMapping" import="//@imports.1">
+          <properties name="value" type="string"/>
+        </aspects>
+        <parameters name="name" qualifiedName="v01.de.fhdo.puls.EnvironmentService.EnvironmentSensorUnitApi.getEnvironmentSensorUnitByName.name" exchangePattern="IN" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="TestString" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="springcloud._types.TestString" import="//@imports.1"/>
+          <originalType xsi:type="intermediate_1:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+          <aspects name="PathVariable" qualifiedName="springcloud.PathVariable" import="//@imports.1">
+            <properties name="value" type="string"/>
+            <propertyValues value="name" property="//@microservices.0/@interfaces.0/@operations.1/@parameters.0/@aspects.0/@properties.0"/>
+          </aspects>
+        </parameters>
+        <parameters name="environmentSensorUnit" qualifiedName="v01.de.fhdo.puls.EnvironmentService.EnvironmentSensorUnitApi.getEnvironmentSensorUnitByName.environmentSensorUnit" exchangePattern="OUT" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="EnvironmentSensorUnitAggregate" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="v01.Environment.EnvironmentSensorUnitAggregate" import="//@imports.0"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="EnvironmentSensorUnitAggregate" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="v01.Environment.EnvironmentSensorUnitAggregate" import="//@imports.0"/>
+        </parameters>
+      </operations>
+      <operations name="getEnvironmentSensorUnitBySensorBoxId" qualifiedName="v01.de.fhdo.puls.EnvironmentService.EnvironmentSensorUnitApi.getEnvironmentSensorUnitBySensorBoxId" visibility="PUBLIC">
+        <endpoints communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json" technology="//@microservices.0/@technologies.0">
+          <addresses>/environmentSensorUnit/sensorBoxId/{sensorBoxId}</addresses>
+        </endpoints>
+        <protocols communicationType="ASYNCHRONOUS" protocol="mqtt" dataFormat="application/xml"/>
+        <protocols communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json"/>
+        <aspects name="GetMapping" qualifiedName="springcloud.GetMapping" import="//@imports.1">
+          <properties name="value" type="string"/>
+        </aspects>
+        <parameters name="sensorBoxId" qualifiedName="v01.de.fhdo.puls.EnvironmentService.EnvironmentSensorUnitApi.getEnvironmentSensorUnitBySensorBoxId.sensorBoxId" exchangePattern="IN" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="Long" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="springcloud._types.Long" import="//@imports.1"/>
+          <originalType xsi:type="intermediate_1:IntermediatePrimitiveType" name="long" origin="BUILTIN" kind="PRIMITIVE" size="64"/>
+          <aspects name="PathVariable" qualifiedName="springcloud.PathVariable" import="//@imports.1">
+            <properties name="value" type="string"/>
+            <propertyValues value="sensorBoxId" property="//@microservices.0/@interfaces.0/@operations.2/@parameters.0/@aspects.0/@properties.0"/>
+          </aspects>
+        </parameters>
+        <parameters name="environmentSensorUnit" qualifiedName="v01.de.fhdo.puls.EnvironmentService.EnvironmentSensorUnitApi.getEnvironmentSensorUnitBySensorBoxId.environmentSensorUnit" exchangePattern="OUT" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="EnvironmentSensorUnitAggregate" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="v01.Environment.EnvironmentSensorUnitAggregate" import="//@imports.0"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="EnvironmentSensorUnitAggregate" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="v01.Environment.EnvironmentSensorUnitAggregate" import="//@imports.0"/>
+        </parameters>
+      </operations>
+      <operations name="getEnvironmentSensorUnits" qualifiedName="v01.de.fhdo.puls.EnvironmentService.EnvironmentSensorUnitApi.getEnvironmentSensorUnits" visibility="PUBLIC">
+        <endpoints communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json" technology="//@microservices.0/@technologies.0">
+          <addresses>/environmentSensorUnits</addresses>
+        </endpoints>
+        <protocols communicationType="ASYNCHRONOUS" protocol="mqtt" dataFormat="application/xml"/>
+        <protocols communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json"/>
+        <aspects name="GetMapping" qualifiedName="springcloud.GetMapping" import="//@imports.1">
+          <properties name="value" type="string"/>
+        </aspects>
+        <parameters name="environmentSensorUnits" qualifiedName="v01.de.fhdo.puls.EnvironmentService.EnvironmentSensorUnitApi.getEnvironmentSensorUnits.environmentSensorUnits" exchangePattern="OUT" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="EnvironmentSensorUnitAggregate" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="v01.Environment.EnvironmentSensorUnitAggregate" import="//@imports.0"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="EnvironmentSensorUnitAggregate" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="v01.Environment.EnvironmentSensorUnitAggregate" import="//@imports.0"/>
+        </parameters>
+      </operations>
+    </interfaces>
+    <interfaces name="EnvironmentSensorInformationApi" qualifiedName="v01.de.fhdo.puls.EnvironmentService.EnvironmentSensorInformationApi" visibility="PUBLIC" hasImplementedOperations="true">
+      <endpoints communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json" technology="//@microservices.0/@technologies.0">
+        <addresses>/resources/v1</addresses>
+      </endpoints>
+      <protocols communicationType="ASYNCHRONOUS" protocol="mqtt" dataFormat="application/xml"/>
+      <protocols communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json"/>
+      <operations name="getLatestSensorValue" qualifiedName="v01.de.fhdo.puls.EnvironmentService.EnvironmentSensorInformationApi.getLatestSensorValue" visibility="PUBLIC">
+        <endpoints communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json" technology="//@microservices.0/@technologies.0">
+          <addresses>/environmentInformation/{sensorBoxId}/{sensor}/latest</addresses>
+        </endpoints>
+        <protocols communicationType="ASYNCHRONOUS" protocol="mqtt" dataFormat="application/xml"/>
+        <protocols communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json"/>
+        <aspects name="GetMapping" qualifiedName="springcloud.GetMapping" import="//@imports.1">
+          <properties name="value" type="string"/>
+        </aspects>
+        <parameters name="sensorBoxId" qualifiedName="v01.de.fhdo.puls.EnvironmentService.EnvironmentSensorInformationApi.getLatestSensorValue.sensorBoxId" exchangePattern="IN" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="Long" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="springcloud._types.Long" import="//@imports.1"/>
+          <originalType xsi:type="intermediate_1:IntermediatePrimitiveType" name="long" origin="BUILTIN" kind="PRIMITIVE" size="64"/>
+          <aspects name="PathVariable" qualifiedName="springcloud.PathVariable" import="//@imports.1">
+            <properties name="value" type="string"/>
+            <propertyValues value="sensorBoxId" property="//@microservices.0/@interfaces.1/@operations.0/@parameters.0/@aspects.0/@properties.0"/>
+          </aspects>
+        </parameters>
+        <parameters name="sensor" qualifiedName="v01.de.fhdo.puls.EnvironmentService.EnvironmentSensorInformationApi.getLatestSensorValue.sensor" exchangePattern="IN" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="TestString" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="springcloud._types.TestString" import="//@imports.1"/>
+          <originalType xsi:type="intermediate_1:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+          <aspects name="PathVariable" qualifiedName="springcloud.PathVariable" import="//@imports.1">
+            <properties name="value" type="string"/>
+            <propertyValues value="sensor" property="//@microservices.0/@interfaces.1/@operations.0/@parameters.1/@aspects.0/@properties.0"/>
+          </aspects>
+        </parameters>
+        <parameters name="latestSensorValue" qualifiedName="v01.de.fhdo.puls.EnvironmentService.EnvironmentSensorInformationApi.getLatestSensorValue.latestSensorValue" exchangePattern="OUT" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="SensorValue" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="v01.Environment.SensorValue" import="//@imports.0"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="SensorValue" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="v01.Environment.SensorValue" import="//@imports.0"/>
+        </parameters>
+      </operations>
+      <operations name="getSensorValue" qualifiedName="v01.de.fhdo.puls.EnvironmentService.EnvironmentSensorInformationApi.getSensorValue" visibility="PUBLIC">
+        <endpoints communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json" technology="//@microservices.0/@technologies.0">
+          <addresses>/environmentInformation/{sensorBoxId}/{sensor}/{numberOfValues}</addresses>
+        </endpoints>
+        <protocols communicationType="ASYNCHRONOUS" protocol="mqtt" dataFormat="application/xml"/>
+        <protocols communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json"/>
+        <aspects name="GetMapping" qualifiedName="springcloud.GetMapping" import="//@imports.1">
+          <properties name="value" type="string"/>
+        </aspects>
+        <parameters name="sensorBoxId" qualifiedName="v01.de.fhdo.puls.EnvironmentService.EnvironmentSensorInformationApi.getSensorValue.sensorBoxId" exchangePattern="IN" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="Long" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="springcloud._types.Long" import="//@imports.1"/>
+          <originalType xsi:type="intermediate_1:IntermediatePrimitiveType" name="long" origin="BUILTIN" kind="PRIMITIVE" size="64"/>
+          <aspects name="PathVariable" qualifiedName="springcloud.PathVariable" import="//@imports.1">
+            <properties name="value" type="string"/>
+            <propertyValues value="sensorBoxId" property="//@microservices.0/@interfaces.1/@operations.1/@parameters.0/@aspects.0/@properties.0"/>
+          </aspects>
+        </parameters>
+        <parameters name="sensor" qualifiedName="v01.de.fhdo.puls.EnvironmentService.EnvironmentSensorInformationApi.getSensorValue.sensor" exchangePattern="IN" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="TestString" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="springcloud._types.TestString" import="//@imports.1"/>
+          <originalType xsi:type="intermediate_1:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+          <aspects name="PathVariable" qualifiedName="springcloud.PathVariable" import="//@imports.1">
+            <properties name="value" type="string"/>
+            <propertyValues value="sensor" property="//@microservices.0/@interfaces.1/@operations.1/@parameters.1/@aspects.0/@properties.0"/>
+          </aspects>
+        </parameters>
+        <parameters name="numberOfValues" qualifiedName="v01.de.fhdo.puls.EnvironmentService.EnvironmentSensorInformationApi.getSensorValue.numberOfValues" exchangePattern="IN" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="Integer" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="springcloud._types.Integer" import="//@imports.1"/>
+          <originalType xsi:type="intermediate_1:IntermediatePrimitiveType" name="int" origin="BUILTIN" kind="PRIMITIVE" size="32"/>
+          <aspects name="PathVariable" qualifiedName="springcloud.PathVariable" import="//@imports.1">
+            <properties name="value" type="string"/>
+            <propertyValues value="numberOfValues" property="//@microservices.0/@interfaces.1/@operations.1/@parameters.2/@aspects.0/@properties.0"/>
+          </aspects>
+        </parameters>
+        <parameters name="sensorValue" qualifiedName="v01.de.fhdo.puls.EnvironmentService.EnvironmentSensorInformationApi.getSensorValue.sensorValue" exchangePattern="OUT" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="SensorValue" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="v01.Environment.SensorValue" import="//@imports.0"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="SensorValue" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="v01.Environment.SensorValue" import="//@imports.0"/>
+        </parameters>
+      </operations>
+      <operations name="getSensorMeasurementTypes" qualifiedName="v01.de.fhdo.puls.EnvironmentService.EnvironmentSensorInformationApi.getSensorMeasurementTypes" visibility="PUBLIC">
+        <endpoints communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json" technology="//@microservices.0/@technologies.0">
+          <addresses>/environmentInformation/sensorBoxId/{sensorBoxId}/measurementTypes</addresses>
+        </endpoints>
+        <protocols communicationType="ASYNCHRONOUS" protocol="mqtt" dataFormat="application/xml"/>
+        <protocols communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json"/>
+        <aspects name="GetMapping" qualifiedName="springcloud.GetMapping" import="//@imports.1">
+          <properties name="value" type="string"/>
+        </aspects>
+        <parameters name="sensorBoxId" qualifiedName="v01.de.fhdo.puls.EnvironmentService.EnvironmentSensorInformationApi.getSensorMeasurementTypes.sensorBoxId" exchangePattern="IN" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="Long" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="springcloud._types.Long" import="//@imports.1"/>
+          <originalType xsi:type="intermediate_1:IntermediatePrimitiveType" name="long" origin="BUILTIN" kind="PRIMITIVE" size="64"/>
+          <aspects name="PathVariable" qualifiedName="springcloud.PathVariable" import="//@imports.1">
+            <properties name="value" type="string"/>
+            <propertyValues value="sensorBoxId" property="//@microservices.0/@interfaces.1/@operations.2/@parameters.0/@aspects.0/@properties.0"/>
+          </aspects>
+        </parameters>
+        <parameters name="sensorMeasurementTypes" qualifiedName="v01.de.fhdo.puls.EnvironmentService.EnvironmentSensorInformationApi.getSensorMeasurementTypes.sensorMeasurementTypes" exchangePattern="OUT" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="TestString" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="springcloud._types.TestString" import="//@imports.1"/>
+          <originalType xsi:type="intermediate_1:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+        </parameters>
+      </operations>
+    </interfaces>
+    <interfaces name="EnvironmentInformationApi" qualifiedName="v01.de.fhdo.puls.EnvironmentService.EnvironmentInformationApi" visibility="PUBLIC" hasImplementedOperations="true">
+      <endpoints communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json" technology="//@microservices.0/@technologies.0">
+        <addresses>/resources/v1</addresses>
+      </endpoints>
+      <protocols communicationType="ASYNCHRONOUS" protocol="mqtt" dataFormat="application/xml"/>
+      <protocols communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json"/>
+      <operations name="getEnvironmentInformation" qualifiedName="v01.de.fhdo.puls.EnvironmentService.EnvironmentInformationApi.getEnvironmentInformation" visibility="PUBLIC">
+        <endpoints communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json" technology="//@microservices.0/@technologies.0">
+          <addresses>/environmentInformation/{id}</addresses>
+        </endpoints>
+        <protocols communicationType="ASYNCHRONOUS" protocol="mqtt" dataFormat="application/xml"/>
+        <protocols communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json"/>
+        <aspects name="GetMapping" qualifiedName="springcloud.GetMapping" import="//@imports.1">
+          <properties name="value" type="string"/>
+        </aspects>
+        <parameters name="id" qualifiedName="v01.de.fhdo.puls.EnvironmentService.EnvironmentInformationApi.getEnvironmentInformation.id" exchangePattern="IN" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="Long" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="springcloud._types.Long" import="//@imports.1"/>
+          <originalType xsi:type="intermediate_1:IntermediatePrimitiveType" name="long" origin="BUILTIN" kind="PRIMITIVE" size="64"/>
+          <aspects name="PathVariable" qualifiedName="springcloud.PathVariable" import="//@imports.1">
+            <properties name="value" type="string"/>
+            <propertyValues value="id" property="//@microservices.0/@interfaces.2/@operations.0/@parameters.0/@aspects.0/@properties.0"/>
+          </aspects>
+        </parameters>
+        <parameters name="environmentInformation" qualifiedName="v01.de.fhdo.puls.EnvironmentService.EnvironmentInformationApi.getEnvironmentInformation.environmentInformation" exchangePattern="OUT" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="EnvironmentInformation" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="v01.Environment.EnvironmentInformation" import="//@imports.0"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="EnvironmentInformation" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="v01.Environment.EnvironmentInformation" import="//@imports.0"/>
+        </parameters>
+      </operations>
+      <operations name="getParticulate2Information" qualifiedName="v01.de.fhdo.puls.EnvironmentService.EnvironmentInformationApi.getParticulate2Information" visibility="PUBLIC">
+        <endpoints communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json" technology="//@microservices.0/@technologies.0">
+          <addresses>/environmentInformation/{id}/particulate2</addresses>
+        </endpoints>
+        <protocols communicationType="ASYNCHRONOUS" protocol="mqtt" dataFormat="application/xml"/>
+        <protocols communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json"/>
+        <aspects name="GetMapping" qualifiedName="springcloud.GetMapping" import="//@imports.1">
+          <properties name="value" type="string"/>
+        </aspects>
+        <parameters name="id" qualifiedName="v01.de.fhdo.puls.EnvironmentService.EnvironmentInformationApi.getParticulate2Information.id" exchangePattern="IN" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="Long" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="springcloud._types.Long" import="//@imports.1"/>
+          <originalType xsi:type="intermediate_1:IntermediatePrimitiveType" name="long" origin="BUILTIN" kind="PRIMITIVE" size="64"/>
+          <aspects name="PathVariable" qualifiedName="springcloud.PathVariable" import="//@imports.1">
+            <properties name="value" type="string"/>
+            <propertyValues value="id" property="//@microservices.0/@interfaces.2/@operations.1/@parameters.0/@aspects.0/@properties.0"/>
+          </aspects>
+        </parameters>
+        <parameters name="particulate2Information" qualifiedName="v01.de.fhdo.puls.EnvironmentService.EnvironmentInformationApi.getParticulate2Information.particulate2Information" exchangePattern="OUT" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="SensorValue" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="v01.Environment.SensorValue" import="//@imports.0"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="SensorValue" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="v01.Environment.SensorValue" import="//@imports.0"/>
+        </parameters>
+      </operations>
+      <operations name="getParticulate10Information" qualifiedName="v01.de.fhdo.puls.EnvironmentService.EnvironmentInformationApi.getParticulate10Information" visibility="PUBLIC">
+        <endpoints communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json" technology="//@microservices.0/@technologies.0">
+          <addresses>/environmentInformation/{id}/particulate10</addresses>
+        </endpoints>
+        <protocols communicationType="ASYNCHRONOUS" protocol="mqtt" dataFormat="application/xml"/>
+        <protocols communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json"/>
+        <aspects name="GetMapping" qualifiedName="springcloud.GetMapping" import="//@imports.1">
+          <properties name="value" type="string"/>
+        </aspects>
+        <parameters name="id" qualifiedName="v01.de.fhdo.puls.EnvironmentService.EnvironmentInformationApi.getParticulate10Information.id" exchangePattern="IN" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="Long" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="springcloud._types.Long" import="//@imports.1"/>
+          <originalType xsi:type="intermediate_1:IntermediatePrimitiveType" name="long" origin="BUILTIN" kind="PRIMITIVE" size="64"/>
+          <aspects name="PathVariable" qualifiedName="springcloud.PathVariable" import="//@imports.1">
+            <properties name="value" type="string"/>
+            <propertyValues value="id" property="//@microservices.0/@interfaces.2/@operations.2/@parameters.0/@aspects.0/@properties.0"/>
+          </aspects>
+        </parameters>
+        <parameters name="particulate10Information" qualifiedName="v01.de.fhdo.puls.EnvironmentService.EnvironmentInformationApi.getParticulate10Information.particulate10Information" exchangePattern="OUT" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="SensorValue" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="v01.Environment.SensorValue" import="//@imports.0"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="SensorValue" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="v01.Environment.SensorValue" import="//@imports.0"/>
+        </parameters>
+      </operations>
+      <operations name="getLightInformation" qualifiedName="v01.de.fhdo.puls.EnvironmentService.EnvironmentInformationApi.getLightInformation" visibility="PUBLIC">
+        <endpoints communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json" technology="//@microservices.0/@technologies.0">
+          <addresses>/environmentInformation/{id}/light</addresses>
+        </endpoints>
+        <protocols communicationType="ASYNCHRONOUS" protocol="mqtt" dataFormat="application/xml"/>
+        <protocols communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json"/>
+        <aspects name="GetMapping" qualifiedName="springcloud.GetMapping" import="//@imports.1">
+          <properties name="value" type="string"/>
+        </aspects>
+        <parameters name="id" qualifiedName="v01.de.fhdo.puls.EnvironmentService.EnvironmentInformationApi.getLightInformation.id" exchangePattern="IN" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="Long" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="springcloud._types.Long" import="//@imports.1"/>
+          <originalType xsi:type="intermediate_1:IntermediatePrimitiveType" name="long" origin="BUILTIN" kind="PRIMITIVE" size="64"/>
+          <aspects name="PathVariable" qualifiedName="springcloud.PathVariable" import="//@imports.1">
+            <properties name="value" type="string"/>
+            <propertyValues value="id" property="//@microservices.0/@interfaces.2/@operations.3/@parameters.0/@aspects.0/@properties.0"/>
+          </aspects>
+        </parameters>
+        <parameters name="lightInformation" qualifiedName="v01.de.fhdo.puls.EnvironmentService.EnvironmentInformationApi.getLightInformation.lightInformation" exchangePattern="OUT" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="SensorValue" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="v01.Environment.SensorValue" import="//@imports.0"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="SensorValue" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="v01.Environment.SensorValue" import="//@imports.0"/>
+        </parameters>
+      </operations>
+      <operations name="getTemperatureInformation" qualifiedName="v01.de.fhdo.puls.EnvironmentService.EnvironmentInformationApi.getTemperatureInformation" visibility="PUBLIC">
+        <endpoints communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json" technology="//@microservices.0/@technologies.0">
+          <addresses>/environmentInformation/{id}/temperature</addresses>
+        </endpoints>
+        <protocols communicationType="ASYNCHRONOUS" protocol="mqtt" dataFormat="application/xml"/>
+        <protocols communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json"/>
+        <aspects name="GetMapping" qualifiedName="springcloud.GetMapping" import="//@imports.1">
+          <properties name="value" type="string"/>
+        </aspects>
+        <parameters name="id" qualifiedName="v01.de.fhdo.puls.EnvironmentService.EnvironmentInformationApi.getTemperatureInformation.id" exchangePattern="IN" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="Long" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="springcloud._types.Long" import="//@imports.1"/>
+          <originalType xsi:type="intermediate_1:IntermediatePrimitiveType" name="long" origin="BUILTIN" kind="PRIMITIVE" size="64"/>
+          <aspects name="PathVariable" qualifiedName="springcloud.PathVariable" import="//@imports.1">
+            <properties name="value" type="string"/>
+            <propertyValues value="id" property="//@microservices.0/@interfaces.2/@operations.4/@parameters.0/@aspects.0/@properties.0"/>
+          </aspects>
+        </parameters>
+        <parameters name="temperatoreInformation" qualifiedName="v01.de.fhdo.puls.EnvironmentService.EnvironmentInformationApi.getTemperatureInformation.temperatoreInformation" exchangePattern="OUT" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="SensorValue" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="v01.Environment.SensorValue" import="//@imports.0"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="SensorValue" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="v01.Environment.SensorValue" import="//@imports.0"/>
+        </parameters>
+      </operations>
+      <operations name="getHumidityInformation" qualifiedName="v01.de.fhdo.puls.EnvironmentService.EnvironmentInformationApi.getHumidityInformation" visibility="PUBLIC">
+        <endpoints communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json" technology="//@microservices.0/@technologies.0">
+          <addresses>/environmentInformation/{id}/humidity</addresses>
+        </endpoints>
+        <protocols communicationType="ASYNCHRONOUS" protocol="mqtt" dataFormat="application/xml"/>
+        <protocols communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json"/>
+        <aspects name="GetMapping" qualifiedName="springcloud.GetMapping" import="//@imports.1">
+          <properties name="value" type="string"/>
+        </aspects>
+        <parameters name="id" qualifiedName="v01.de.fhdo.puls.EnvironmentService.EnvironmentInformationApi.getHumidityInformation.id" exchangePattern="IN" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="Long" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="springcloud._types.Long" import="//@imports.1"/>
+          <originalType xsi:type="intermediate_1:IntermediatePrimitiveType" name="long" origin="BUILTIN" kind="PRIMITIVE" size="64"/>
+          <aspects name="PathVariable" qualifiedName="springcloud.PathVariable" import="//@imports.1">
+            <properties name="value" type="string"/>
+            <propertyValues value="id" property="//@microservices.0/@interfaces.2/@operations.5/@parameters.0/@aspects.0/@properties.0"/>
+          </aspects>
+        </parameters>
+        <parameters name="humidityInformation" qualifiedName="v01.de.fhdo.puls.EnvironmentService.EnvironmentInformationApi.getHumidityInformation.humidityInformation" exchangePattern="OUT" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="SensorValue" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="v01.Environment.SensorValue" import="//@imports.0"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="SensorValue" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="v01.Environment.SensorValue" import="//@imports.0"/>
+        </parameters>
+      </operations>
+    </interfaces>
+  </microservices>
+</intermediate:IntermediateServiceModel>

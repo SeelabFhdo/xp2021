@@ -1,0 +1,21 @@
+import technology from "../technology/container_base.technology" as container_base
+import technology from "../technology/mariadb.technology" as mariadb
+//import technology from "../Technology/protocol.technology" as ^protocol
+import nodes from "../BookingService/booking.operation" as bookingService
+
+@technology(container_base)
+@technology(mariadb)
+MariaDB is mariadb::_infrastructure.MariaDB 
+	with operation environment "docker/mariadb:latest"
+	used by nodes 
+		bookingService::BookingService {
+	        default values {
+	            userName="admin"
+	            hostName="maridb"
+	            userPassword="password"
+	            rootPassword="password"
+	            imageType="dockerhub"
+	            port="3306"
+	            dataBase="booking"
+	        }
+}

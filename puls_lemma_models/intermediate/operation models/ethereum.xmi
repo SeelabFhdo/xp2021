@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="ASCII"?>
+<intermediate:IntermediateOperationModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:intermediate="http://www.fhdo.de/lemma/operation/intermediate" sourceModelUri="file://C:/Users/Simon/Documents/Arbeitsordner LEMMA/puls-amp-2021/infrastructure/ethereum.operation">
+  <imports name="Ethereum" importUri="file://C:/Users/Simon/Documents/Arbeitsordner LEMMA/puls-amp-2021/technology/ethereum.technology" importTypeName="TECHNOLOGY"/>
+  <imports name="bookingService" importUri="file://C:/Users/Simon/Documents/Arbeitsordner LEMMA/LEMMA_Workspace/puls-amp-2021/intermediate/operation models/booking.xmi" importTypeName="OPERATION_NODES"/>
+  <infrastructureNodes name="Ethereum" imports="//@imports.0" operationEnvironment="//@infrastructureNodes.0/@reference/@technology/@environment" qualifiedInfrastructureTechnologyName="Ethereum.EthereumBlockchain">
+    <defaultValues value="http://localhost" technologySpecificProperty="//@infrastructureNodes.0/@reference/@technology/@properties.0"/>
+    <defaultValues value="8545" technologySpecificProperty="//@infrastructureNodes.0/@reference/@technology/@properties.1"/>
+    <usedByNodes imported="true" name="BookingService" qualifiedTechnologyName="container_base.Kubernetes" import="//@imports.1"/>
+    <reference import="//@imports.0">
+      <technology name="EthereumBlockchain">
+        <environment environmentName="Ethereum Virtual Machine"/>
+        <properties name="blockchainNetworkHostname" type="string"/>
+        <properties name="blockchainNetworkPort" type="string"/>
+      </technology>
+    </reference>
+  </infrastructureNodes>
+</intermediate:IntermediateOperationModel>

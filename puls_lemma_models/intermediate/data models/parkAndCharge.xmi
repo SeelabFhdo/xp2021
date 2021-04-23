@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="ASCII"?>
+<intermediate:IntermediateDataModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:intermediate="http://www.fhdo.de/lemma/data/intermediate" sourceModelUri="file://C:/Users/Simon/Documents/Arbeitsordner LEMMA/puls-amp-2021/ParkAndChargeService/parkAndCharge.data">
+  <versions name="v01">
+    <contexts name="ParkAndCharge" qualifiedName="v01.ParkAndCharge">
+      <complexTypes xsi:type="intermediate:IntermediateDataStructure" name="ParkingSpaceAggregate" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="v01.ParkAndCharge.ParkingSpaceAggregate">
+        <featureNames>ENTITY</featureNames>
+        <dataFields name="id" qualifiedName="v01.ParkAndCharge.ParkingSpaceAggregate.id">
+          <featureNames>IDENTIFIER</featureNames>
+          <type xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+          <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+        </dataFields>
+        <dataFields name="name" qualifiedName="v01.ParkAndCharge.ParkingSpaceAggregate.name">
+          <type xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+          <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+        </dataFields>
+        <dataFields name="description" qualifiedName="v01.ParkAndCharge.ParkingSpaceAggregate.description">
+          <type xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+          <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+        </dataFields>
+        <dataFields name="ownerId" qualifiedName="v01.ParkAndCharge.ParkingSpaceAggregate.ownerId">
+          <type xsi:type="intermediate:IntermediatePrimitiveType" name="long" origin="BUILTIN" kind="PRIMITIVE" size="64"/>
+          <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="long" origin="BUILTIN" kind="PRIMITIVE" size="64"/>
+        </dataFields>
+        <dataFields name="parkingPricePerHour" qualifiedName="v01.ParkAndCharge.ParkingSpaceAggregate.parkingPricePerHour">
+          <type xsi:type="intermediate:IntermediatePrimitiveType" name="float" origin="BUILTIN" kind="PRIMITIVE" size="32"/>
+          <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="float" origin="BUILTIN" kind="PRIMITIVE" size="32"/>
+        </dataFields>
+        <dataFields name="createdDate" qualifiedName="v01.ParkAndCharge.ParkingSpaceAggregate.createdDate">
+          <type xsi:type="intermediate:IntermediatePrimitiveType" name="date" origin="BUILTIN" kind="PRIMITIVE"/>
+          <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="date" origin="BUILTIN" kind="PRIMITIVE"/>
+        </dataFields>
+        <dataFields name="lastModifiedDate" qualifiedName="v01.ParkAndCharge.ParkingSpaceAggregate.lastModifiedDate">
+          <type xsi:type="intermediate:IntermediatePrimitiveType" name="date" origin="BUILTIN" kind="PRIMITIVE"/>
+          <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="date" origin="BUILTIN" kind="PRIMITIVE"/>
+        </dataFields>
+        <dataFields name="activated" qualifiedName="v01.ParkAndCharge.ParkingSpaceAggregate.activated">
+          <type xsi:type="intermediate:IntermediatePrimitiveType" name="boolean" origin="BUILTIN" kind="PRIMITIVE" size="1"/>
+          <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="boolean" origin="BUILTIN" kind="PRIMITIVE" size="1"/>
+        </dataFields>
+        <dataFields name="blocked" qualifiedName="v01.ParkAndCharge.ParkingSpaceAggregate.blocked">
+          <type xsi:type="intermediate:IntermediatePrimitiveType" name="boolean" origin="BUILTIN" kind="PRIMITIVE" size="1"/>
+          <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="boolean" origin="BUILTIN" kind="PRIMITIVE" size="1"/>
+        </dataFields>
+        <dataFields name="offered" qualifiedName="v01.ParkAndCharge.ParkingSpaceAggregate.offered">
+          <type xsi:type="intermediate:IntermediatePrimitiveType" name="boolean" origin="BUILTIN" kind="PRIMITIVE" size="1"/>
+          <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="boolean" origin="BUILTIN" kind="PRIMITIVE" size="1"/>
+        </dataFields>
+        <dataFields name="location" qualifiedName="v01.ParkAndCharge.ParkingSpaceAggregate.location">
+          <type xsi:type="intermediate:IntermediateComplexType" name="Location" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="v01.ParkAndCharge.Location"/>
+          <originalType xsi:type="intermediate:IntermediateComplexType" name="Location" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="v01.ParkAndCharge.Location"/>
+        </dataFields>
+        <dataFields name="availabilityPeriods" qualifiedName="v01.ParkAndCharge.ParkingSpaceAggregate.availabilityPeriods">
+          <type xsi:type="intermediate:IntermediateComplexType" name="TimePeriods" origin="DATA_MODEL" kind="LIST" qualifiedName="v01.ParkAndCharge.TimePeriods"/>
+          <originalType xsi:type="intermediate:IntermediateComplexType" name="TimePeriods" origin="DATA_MODEL" kind="LIST" qualifiedName="v01.ParkAndCharge.TimePeriods"/>
+        </dataFields>
+        <dataFields name="parkingSpaceSize" qualifiedName="v01.ParkAndCharge.ParkingSpaceAggregate.parkingSpaceSize">
+          <type xsi:type="intermediate:IntermediateComplexType" name="ParkingSpaceSize" origin="DATA_MODEL" kind="ENUMERATION" qualifiedName="v01.ParkAndCharge.ParkingSpaceSize"/>
+          <originalType xsi:type="intermediate:IntermediateComplexType" name="ParkingSpaceSize" origin="DATA_MODEL" kind="ENUMERATION" qualifiedName="v01.ParkAndCharge.ParkingSpaceSize"/>
+        </dataFields>
+      </complexTypes>
+      <complexTypes xsi:type="intermediate:IntermediateDataStructure" name="ParkingSpaceRepository" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="v01.ParkAndCharge.ParkingSpaceRepository">
+        <featureNames>REPOSITORY</featureNames>
+        <dataFields name="parkingSpaceAggregate" qualifiedName="v01.ParkAndCharge.ParkingSpaceRepository.parkingSpaceAggregate">
+          <type xsi:type="intermediate:IntermediateComplexType" name="ParkingSpaceAggregate" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="v01.ParkAndCharge.ParkingSpaceAggregate"/>
+          <originalType xsi:type="intermediate:IntermediateComplexType" name="ParkingSpaceAggregate" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="v01.ParkAndCharge.ParkingSpaceAggregate"/>
+        </dataFields>
+        <dataFields name="id" qualifiedName="v01.ParkAndCharge.ParkingSpaceRepository.id">
+          <type xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+          <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+        </dataFields>
+      </complexTypes>
+      <complexTypes xsi:type="intermediate:IntermediateDataStructure" name="ElectrifiedParkingSpaceAggregate" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="v01.ParkAndCharge.ElectrifiedParkingSpaceAggregate">
+        <featureNames>ENTITY</featureNames>
+        <dataFields name="id" qualifiedName="v01.ParkAndCharge.ElectrifiedParkingSpaceAggregate.id">
+          <featureNames>IDENTIFIER</featureNames>
+          <type xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+          <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+        </dataFields>
+        <dataFields name="name" qualifiedName="v01.ParkAndCharge.ElectrifiedParkingSpaceAggregate.name">
+          <type xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+          <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+        </dataFields>
+        <dataFields name="description" qualifiedName="v01.ParkAndCharge.ElectrifiedParkingSpaceAggregate.description">
+          <type xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+          <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+        </dataFields>
+        <dataFields name="ownerId" qualifiedName="v01.ParkAndCharge.ElectrifiedParkingSpaceAggregate.ownerId">
+          <type xsi:type="intermediate:IntermediatePrimitiveType" name="long" origin="BUILTIN" kind="PRIMITIVE" size="64"/>
+          <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="long" origin="BUILTIN" kind="PRIMITIVE" size="64"/>
+        </dataFields>
+        <dataFields name="parkingPricePerHour" qualifiedName="v01.ParkAndCharge.ElectrifiedParkingSpaceAggregate.parkingPricePerHour">
+          <type xsi:type="intermediate:IntermediatePrimitiveType" name="float" origin="BUILTIN" kind="PRIMITIVE" size="32"/>
+          <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="float" origin="BUILTIN" kind="PRIMITIVE" size="32"/>
+        </dataFields>
+        <dataFields name="createdDate" qualifiedName="v01.ParkAndCharge.ElectrifiedParkingSpaceAggregate.createdDate">
+          <type xsi:type="intermediate:IntermediatePrimitiveType" name="date" origin="BUILTIN" kind="PRIMITIVE"/>
+          <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="date" origin="BUILTIN" kind="PRIMITIVE"/>
+        </dataFields>
+        <dataFields name="lastModifiedDate" qualifiedName="v01.ParkAndCharge.ElectrifiedParkingSpaceAggregate.lastModifiedDate">
+          <type xsi:type="intermediate:IntermediatePrimitiveType" name="date" origin="BUILTIN" kind="PRIMITIVE"/>
+          <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="date" origin="BUILTIN" kind="PRIMITIVE"/>
+        </dataFields>
+        <dataFields name="activated" qualifiedName="v01.ParkAndCharge.ElectrifiedParkingSpaceAggregate.activated">
+          <type xsi:type="intermediate:IntermediatePrimitiveType" name="boolean" origin="BUILTIN" kind="PRIMITIVE" size="1"/>
+          <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="boolean" origin="BUILTIN" kind="PRIMITIVE" size="1"/>
+        </dataFields>
+        <dataFields name="blocked" qualifiedName="v01.ParkAndCharge.ElectrifiedParkingSpaceAggregate.blocked">
+          <type xsi:type="intermediate:IntermediatePrimitiveType" name="boolean" origin="BUILTIN" kind="PRIMITIVE" size="1"/>
+          <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="boolean" origin="BUILTIN" kind="PRIMITIVE" size="1"/>
+        </dataFields>
+        <dataFields name="offered" qualifiedName="v01.ParkAndCharge.ElectrifiedParkingSpaceAggregate.offered">
+          <type xsi:type="intermediate:IntermediatePrimitiveType" name="boolean" origin="BUILTIN" kind="PRIMITIVE" size="1"/>
+          <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="boolean" origin="BUILTIN" kind="PRIMITIVE" size="1"/>
+        </dataFields>
+        <dataFields name="location" qualifiedName="v01.ParkAndCharge.ElectrifiedParkingSpaceAggregate.location">
+          <type xsi:type="intermediate:IntermediateComplexType" name="Location" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="v01.ParkAndCharge.Location"/>
+          <originalType xsi:type="intermediate:IntermediateComplexType" name="Location" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="v01.ParkAndCharge.Location"/>
+        </dataFields>
+        <dataFields name="availabilityPeriods" qualifiedName="v01.ParkAndCharge.ElectrifiedParkingSpaceAggregate.availabilityPeriods">
+          <type xsi:type="intermediate:IntermediateComplexType" name="TimePeriods" origin="DATA_MODEL" kind="LIST" qualifiedName="v01.ParkAndCharge.TimePeriods"/>
+          <originalType xsi:type="intermediate:IntermediateComplexType" name="TimePeriods" origin="DATA_MODEL" kind="LIST" qualifiedName="v01.ParkAndCharge.TimePeriods"/>
+        </dataFields>
+        <dataFields name="parkingSpaceSize" qualifiedName="v01.ParkAndCharge.ElectrifiedParkingSpaceAggregate.parkingSpaceSize">
+          <type xsi:type="intermediate:IntermediateComplexType" name="ParkingSpaceSize" origin="DATA_MODEL" kind="ENUMERATION" qualifiedName="v01.ParkAndCharge.ParkingSpaceSize"/>
+          <originalType xsi:type="intermediate:IntermediateComplexType" name="ParkingSpaceSize" origin="DATA_MODEL" kind="ENUMERATION" qualifiedName="v01.ParkAndCharge.ParkingSpaceSize"/>
+        </dataFields>
+        <dataFields name="chargingPricePerKWH" qualifiedName="v01.ParkAndCharge.ElectrifiedParkingSpaceAggregate.chargingPricePerKWH">
+          <type xsi:type="intermediate:IntermediatePrimitiveType" name="float" origin="BUILTIN" kind="PRIMITIVE" size="32"/>
+          <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="float" origin="BUILTIN" kind="PRIMITIVE" size="32"/>
+        </dataFields>
+        <dataFields name="chargingType" qualifiedName="v01.ParkAndCharge.ElectrifiedParkingSpaceAggregate.chargingType">
+          <type xsi:type="intermediate:IntermediateComplexType" name="ChargingType" origin="DATA_MODEL" kind="ENUMERATION" qualifiedName="v01.ParkAndCharge.ChargingType"/>
+          <originalType xsi:type="intermediate:IntermediateComplexType" name="ChargingType" origin="DATA_MODEL" kind="ENUMERATION" qualifiedName="v01.ParkAndCharge.ChargingType"/>
+        </dataFields>
+        <dataFields name="pluginType" qualifiedName="v01.ParkAndCharge.ElectrifiedParkingSpaceAggregate.pluginType">
+          <type xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+          <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+        </dataFields>
+      </complexTypes>
+      <complexTypes xsi:type="intermediate:IntermediateDataStructure" name="ElectrifiedParkingSpaceRepository" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="v01.ParkAndCharge.ElectrifiedParkingSpaceRepository">
+        <featureNames>REPOSITORY</featureNames>
+        <dataFields name="electrifiedParkingSpaceAggregate" qualifiedName="v01.ParkAndCharge.ElectrifiedParkingSpaceRepository.electrifiedParkingSpaceAggregate">
+          <type xsi:type="intermediate:IntermediateComplexType" name="ElectrifiedParkingSpaceAggregate" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="v01.ParkAndCharge.ElectrifiedParkingSpaceAggregate"/>
+          <originalType xsi:type="intermediate:IntermediateComplexType" name="ElectrifiedParkingSpaceAggregate" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="v01.ParkAndCharge.ElectrifiedParkingSpaceAggregate"/>
+        </dataFields>
+        <dataFields name="id" qualifiedName="v01.ParkAndCharge.ElectrifiedParkingSpaceRepository.id">
+          <type xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+          <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+        </dataFields>
+      </complexTypes>
+      <complexTypes xsi:type="intermediate:IntermediateDataStructure" name="Location" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="v01.ParkAndCharge.Location">
+        <featureNames>VALUE_OBJECT</featureNames>
+        <dataFields name="longitued" qualifiedName="v01.ParkAndCharge.Location.longitued">
+          <type xsi:type="intermediate:IntermediatePrimitiveType" name="double" origin="BUILTIN" kind="PRIMITIVE" size="64"/>
+          <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="double" origin="BUILTIN" kind="PRIMITIVE" size="64"/>
+        </dataFields>
+        <dataFields name="latitude" qualifiedName="v01.ParkAndCharge.Location.latitude">
+          <type xsi:type="intermediate:IntermediatePrimitiveType" name="double" origin="BUILTIN" kind="PRIMITIVE" size="64"/>
+          <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="double" origin="BUILTIN" kind="PRIMITIVE" size="64"/>
+        </dataFields>
+      </complexTypes>
+      <complexTypes xsi:type="intermediate:IntermediateDataStructure" name="TimePeriod" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="v01.ParkAndCharge.TimePeriod">
+        <featureNames>VALUE_OBJECT</featureNames>
+        <dataFields name="start" qualifiedName="v01.ParkAndCharge.TimePeriod.start">
+          <type xsi:type="intermediate:IntermediatePrimitiveType" name="date" origin="BUILTIN" kind="PRIMITIVE"/>
+          <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="date" origin="BUILTIN" kind="PRIMITIVE"/>
+        </dataFields>
+        <dataFields name="end" qualifiedName="v01.ParkAndCharge.TimePeriod.end">
+          <type xsi:type="intermediate:IntermediatePrimitiveType" name="date" origin="BUILTIN" kind="PRIMITIVE"/>
+          <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="date" origin="BUILTIN" kind="PRIMITIVE"/>
+        </dataFields>
+      </complexTypes>
+      <complexTypes xsi:type="intermediate:IntermediateDataStructure" name="CPIChangeMessage" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="v01.ParkAndCharge.CPIChangeMessage">
+        <featureNames>VALUE_OBJECT</featureNames>
+        <dataFields name="chargingPointId" qualifiedName="v01.ParkAndCharge.CPIChangeMessage.chargingPointId">
+          <type xsi:type="intermediate:IntermediatePrimitiveType" name="long" origin="BUILTIN" kind="PRIMITIVE" size="64"/>
+          <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="long" origin="BUILTIN" kind="PRIMITIVE" size="64"/>
+        </dataFields>
+        <dataFields name="chargedEnergy" qualifiedName="v01.ParkAndCharge.CPIChangeMessage.chargedEnergy">
+          <type xsi:type="intermediate:IntermediatePrimitiveType" name="float" origin="BUILTIN" kind="PRIMITIVE" size="32"/>
+          <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="float" origin="BUILTIN" kind="PRIMITIVE" size="32"/>
+        </dataFields>
+        <dataFields name="userId" qualifiedName="v01.ParkAndCharge.CPIChangeMessage.userId">
+          <type xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+          <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+        </dataFields>
+        <dataFields name="current_L1" qualifiedName="v01.ParkAndCharge.CPIChangeMessage.current_L1">
+          <type xsi:type="intermediate:IntermediatePrimitiveType" name="float" origin="BUILTIN" kind="PRIMITIVE" size="32"/>
+          <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="float" origin="BUILTIN" kind="PRIMITIVE" size="32"/>
+        </dataFields>
+        <dataFields name="current_L2" qualifiedName="v01.ParkAndCharge.CPIChangeMessage.current_L2">
+          <type xsi:type="intermediate:IntermediatePrimitiveType" name="float" origin="BUILTIN" kind="PRIMITIVE" size="32"/>
+          <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="float" origin="BUILTIN" kind="PRIMITIVE" size="32"/>
+        </dataFields>
+        <dataFields name="current_L3" qualifiedName="v01.ParkAndCharge.CPIChangeMessage.current_L3">
+          <type xsi:type="intermediate:IntermediatePrimitiveType" name="float" origin="BUILTIN" kind="PRIMITIVE" size="32"/>
+          <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="float" origin="BUILTIN" kind="PRIMITIVE" size="32"/>
+        </dataFields>
+        <dataFields name="voltage_L1" qualifiedName="v01.ParkAndCharge.CPIChangeMessage.voltage_L1">
+          <type xsi:type="intermediate:IntermediatePrimitiveType" name="float" origin="BUILTIN" kind="PRIMITIVE" size="32"/>
+          <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="float" origin="BUILTIN" kind="PRIMITIVE" size="32"/>
+        </dataFields>
+        <dataFields name="voltage_L2" qualifiedName="v01.ParkAndCharge.CPIChangeMessage.voltage_L2">
+          <type xsi:type="intermediate:IntermediatePrimitiveType" name="float" origin="BUILTIN" kind="PRIMITIVE" size="32"/>
+          <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="float" origin="BUILTIN" kind="PRIMITIVE" size="32"/>
+        </dataFields>
+        <dataFields name="voltage_L3" qualifiedName="v01.ParkAndCharge.CPIChangeMessage.voltage_L3">
+          <type xsi:type="intermediate:IntermediatePrimitiveType" name="float" origin="BUILTIN" kind="PRIMITIVE" size="32"/>
+          <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="float" origin="BUILTIN" kind="PRIMITIVE" size="32"/>
+        </dataFields>
+        <dataFields name="current_Limit" qualifiedName="v01.ParkAndCharge.CPIChangeMessage.current_Limit">
+          <type xsi:type="intermediate:IntermediatePrimitiveType" name="int" origin="BUILTIN" kind="PRIMITIVE" size="32"/>
+          <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="int" origin="BUILTIN" kind="PRIMITIVE" size="32"/>
+        </dataFields>
+        <dataFields name="timestamp" qualifiedName="v01.ParkAndCharge.CPIChangeMessage.timestamp">
+          <type xsi:type="intermediate:IntermediatePrimitiveType" name="date" origin="BUILTIN" kind="PRIMITIVE"/>
+          <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="date" origin="BUILTIN" kind="PRIMITIVE"/>
+        </dataFields>
+        <dataFields name="status" qualifiedName="v01.ParkAndCharge.CPIChangeMessage.status">
+          <type xsi:type="intermediate:IntermediateComplexType" name="Status" origin="DATA_MODEL" kind="ENUMERATION" qualifiedName="v01.ParkAndCharge.Status"/>
+          <originalType xsi:type="intermediate:IntermediateComplexType" name="Status" origin="DATA_MODEL" kind="ENUMERATION" qualifiedName="v01.ParkAndCharge.Status"/>
+        </dataFields>
+      </complexTypes>
+      <complexTypes xsi:type="intermediate:IntermediateListType" name="TimePeriods" origin="DATA_MODEL" kind="LIST" qualifiedName="v01.ParkAndCharge.TimePeriods" structuredList="true">
+        <dataFields name="tp" qualifiedName="v01.ParkAndCharge.TimePeriods.tp">
+          <type xsi:type="intermediate:IntermediateComplexType" name="TimePeriod" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="v01.ParkAndCharge.TimePeriod"/>
+          <originalType xsi:type="intermediate:IntermediateComplexType" name="TimePeriod" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="v01.ParkAndCharge.TimePeriod"/>
+        </dataFields>
+      </complexTypes>
+      <complexTypes xsi:type="intermediate:IntermediateListType" name="IDs" origin="DATA_MODEL" kind="LIST" qualifiedName="v01.ParkAndCharge.IDs" primitiveList="true">
+        <primitiveType name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+      </complexTypes>
+      <complexTypes xsi:type="intermediate:IntermediateEnumeration" name="ParkingSpaceSize" origin="DATA_MODEL" kind="ENUMERATION" qualifiedName="v01.ParkAndCharge.ParkingSpaceSize">
+        <fields name="SMALL" qualifiedName="v01.ParkAndCharge.ParkingSpaceSize.SMALL"/>
+        <fields name="MEDIUM" qualifiedName="v01.ParkAndCharge.ParkingSpaceSize.MEDIUM"/>
+        <fields name="LARGE" qualifiedName="v01.ParkAndCharge.ParkingSpaceSize.LARGE"/>
+      </complexTypes>
+      <complexTypes xsi:type="intermediate:IntermediateEnumeration" name="ChargingType" origin="DATA_MODEL" kind="ENUMERATION" qualifiedName="v01.ParkAndCharge.ChargingType">
+        <fields name="FAST" qualifiedName="v01.ParkAndCharge.ChargingType.FAST"/>
+        <fields name="NORMAL" qualifiedName="v01.ParkAndCharge.ChargingType.NORMAL"/>
+      </complexTypes>
+      <complexTypes xsi:type="intermediate:IntermediateEnumeration" name="Status" origin="DATA_MODEL" kind="ENUMERATION" qualifiedName="v01.ParkAndCharge.Status">
+        <fields name="A" qualifiedName="v01.ParkAndCharge.Status.A"/>
+        <fields name="B" qualifiedName="v01.ParkAndCharge.Status.B"/>
+        <fields name="C" qualifiedName="v01.ParkAndCharge.Status.C"/>
+        <fields name="D" qualifiedName="v01.ParkAndCharge.Status.D"/>
+      </complexTypes>
+    </contexts>
+  </versions>
+</intermediate:IntermediateDataModel>

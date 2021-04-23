@@ -1,0 +1,26 @@
+import technology from "../technology/container_base.technology" as container_base
+import technology from "../technology/eureka.technology" as Eureka
+import nodes from "../BookingService/booking.operation" as bookingService
+import nodes from "../EnvironmentService/environment.operation" as environmentService
+import nodes from "../ParkAndChargeService/parkAndCharge.operation" as parkAndChargeService
+
+
+@technology(container_base)
+@technology(Eureka)
+Eureka is Eureka::_infrastructure.Eureka
+    with operation environment "openjdk:11-jdk-slim"
+    used by nodes
+    	bookingService::BookingService,
+    	environmentService::EnvironmentService,
+    	parkAndChargeService::ParkAndChargeService {
+		    default values {
+		        hostname="eureka"
+		        port=8761
+		        imageType="SpringComponent"
+		        mavenArtifactId="Eureka"
+		        mavenGroupId="de.fhdo.puls.service.eureka"
+		        mavenVersion="0.0.1-SNAPSHOT"
+		        mavenName="eureka"
+		        programmingLanguage="Java"
+		    }
+}

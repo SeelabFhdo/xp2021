@@ -1,0 +1,60 @@
+import microservices from "booking.services" as bookingService
+import technology from "../technology/container_base.technology" as container_base
+import technology from "../technology/ethereum.technology" as ethereum
+import technology from "../technology/protocol.technology" as ^protocol
+import nodes from "../infrastructure/ethereum.operation" as ethereumOperation
+import nodes from "../infrastructure/eureka.operation" as eureka
+import nodes from "../infrastructure/mariadb.operation" as mariaDB
+import nodes from "../infrastructure/keycloak.operation" as keycloakOperation
+import nodes from "../infrastructure/kafka.operation" as kafka
+
+@technology(container_base)
+@technology(ethereum)
+@technology(^protocol)
+container BookingService
+	deployment technology container_base::_deployment.Kubernetes with operation environment "openjdk:11-jdk-slim"
+	deploys bookingService::v01.de.fhdo.puls.BookingService 
+	depends on nodes 
+		ethereumOperation::Ethereum, 
+		eureka::Eureka, 
+		mariaDB::MariaDB,
+		keycloakOperation::Keycloak,
+		kafka::Kafka 
+	{
+			aspects {
+				ethereum::_aspects.EthereumNetwork(
+					privateKey="eda29f72578fbcdf81cad972c61b4f3fa551932c45df419125486f4beb731d3b",
+					hostName="http://10.0.140.93",
+					port=8545,
+					gasLimit=8000000,
+					gasPrice=20000000000
+				);
+			}
+			
+			default values {
+				//General Spring Boot configurations
+				springApplicationName="BookingService"
+				serverPort=6061
+				
+				//MariaDB database configuration
+				springDatasourceUrl="jdbc:mariadb://mariadb:3306/booking"
+				springDatasourceUsername="admin"
+				springDatasourcePassword="password"
+				
+				//Kafka configuration
+				kafkaBootstrapAddress="localhost:9092"
+				kafkaMessageTopicName="puls"
+				kafkaGroupId="booking_service"
+				
+				//Keycloak configuration
+				keycloakAuthServerUrl="https://auth.seelab.fh-dortmund.de/auth"
+				keycloakRealm="puls"
+				keycloakResource="puls"
+				keycloakBearerOnly=true
+				
+				//Eureka configuration
+				eurekaUri="http://discovery-service:8761/eureka"
+				
+				basic endpoints {^protocol::_protocols.rest: "http://localhost:6061/bookingService";}
+			}
+	}

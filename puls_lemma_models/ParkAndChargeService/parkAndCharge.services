@@ -1,0 +1,76 @@
+import datatypes from "parkAndCharge.data" as parkAndChargeData
+import technology from "../technology/spring.technology" as java
+
+@technology(java)
+public functional microservice  de.fhdo.puls.ParkAndChargeService version v01 {
+	
+	@endpoints(java::_protocols.rest: "/resources/v1";)
+	interface ParkingSpaceApi {
+		
+		@endpoints(java::_protocols.rest: "/parkingSpace";)
+		@java::_aspects.PostMapping
+		public createParkingSpace(
+			@java::_aspects.RequestBody
+			sync in parkingSpace : parkAndChargeData::v01.ParkAndCharge.ParkingSpaceAggregate
+		);
+		
+		@endpoints(java::_protocols.rest: "/parkingSpace/id/{id}";)
+		@java::_aspects.GetMapping
+		public getParkingSpaceById(
+			@java::_aspects.PathVariable(value="id")
+			sync in id : string,
+			sync out parkingSpace : parkAndChargeData::v01.ParkAndCharge.ParkingSpaceAggregate
+		);
+		
+		@endpoints(java::_protocols.rest: "/parkingSpace/ids";)
+		@java::_aspects.GetMapping
+		public getParkingSpacesByIds(
+			@java::_aspects.RequestBody
+			sync in ids : parkAndChargeData::v01.ParkAndCharge.IDs,
+			sync out parkingSpaces : parkAndChargeData::v01.ParkAndCharge.ParkingSpaceAggregate
+		);
+		
+		@endpoints(java::_protocols.rest: "/parkingSpaces";)
+		@java::_aspects.GetMapping
+		public getAllParkingSpaces(
+			sync out parkingSpaces : parkAndChargeData::v01.ParkAndCharge.ParkingSpaceAggregate
+		);
+		
+	}
+	
+	
+	
+	@endpoints(java::_protocols.rest: "/resources/v1";)
+	interface ElectrifiedParkingSpaceApi {
+		
+		@endpoints(java::_protocols.rest: "/electrifiedParkingSpace";)
+		@java::_aspects.PostMapping
+		public createElectrifiedParkingSpace(
+			@java::_aspects.RequestBody
+			sync in electrifiedParkingSpace : parkAndChargeData::v01.ParkAndCharge.ElectrifiedParkingSpaceAggregate
+		);
+		
+		@endpoints(java::_protocols.rest: "/electrifiedParkingSpace/id/{id}";)
+		@java::_aspects.GetMapping
+		public getElectrifiedParkingSpaceById(
+			@java::_aspects.PathVariable(value="id")
+			sync in id : string,
+			sync out electrifiedParkingSpace : parkAndChargeData::v01.ParkAndCharge.ElectrifiedParkingSpaceAggregate
+		);
+		
+		@endpoints(java::_protocols.rest: "/electrifiedParkingSpace/ids";)
+		@java::_aspects.GetMapping
+		public getElectrifiedParkingSpacesByIds(
+			@java::_aspects.RequestBody
+			sync in ids : parkAndChargeData::v01.ParkAndCharge.IDs,
+			sync out electrifiedParkingSpaces : parkAndChargeData::v01.ParkAndCharge.ElectrifiedParkingSpaceAggregate
+		);
+		
+		@endpoints(java::_protocols.rest: "/electrifiedParkingSpaces";)
+		@java::_aspects.GetMapping
+		public getAllElectrifiedParkingSpaces(
+			sync out electrifiedParkingSpaces : parkAndChargeData::v01.ParkAndCharge.ElectrifiedParkingSpaceAggregate
+		);
+		
+	}
+}

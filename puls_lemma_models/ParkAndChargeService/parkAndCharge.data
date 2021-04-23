@@ -1,0 +1,96 @@
+version v01 {
+	context ParkAndCharge {
+		
+		structure ParkingSpaceAggregate<entity> {
+			string id<identifier>,
+			string name,
+			string description,
+			long ownerId,
+			float parkingPricePerHour,
+			date createdDate,
+			date lastModifiedDate,
+			boolean activated,
+			boolean blocked,
+			boolean offered,
+			Location location,
+			TimePeriods availabilityPeriods,
+			ParkingSpaceSize parkingSpaceSize
+		}
+		
+		structure ParkingSpaceRepository<repository>{
+			ParkingSpaceAggregate parkingSpaceAggregate,
+			string id
+		}
+		
+		structure ElectrifiedParkingSpaceAggregate<entity> {
+			string id<identifier>,
+			string name,
+			string description,
+			long ownerId,
+			float parkingPricePerHour,
+			date createdDate,
+			date lastModifiedDate,
+			boolean activated,
+			boolean blocked,
+			boolean offered,
+			Location location,
+			TimePeriods availabilityPeriods,
+			ParkingSpaceSize parkingSpaceSize,
+			float chargingPricePerKWH,
+			ChargingType chargingType,
+			string pluginType
+		}
+		
+		structure ElectrifiedParkingSpaceRepository<repository>{
+			ElectrifiedParkingSpaceAggregate electrifiedParkingSpaceAggregate,
+			string id
+		}
+		
+		structure Location<valueObject> {
+			double longitued,
+			double latitude
+		}
+		
+		structure TimePeriod<valueObject> {
+			date start,
+			date end	
+		}
+		
+		list TimePeriods {TimePeriod tp}
+		
+		enum ParkingSpaceSize {
+			SMALL,
+			MEDIUM,
+			LARGE
+		}
+		
+		enum ChargingType{
+			FAST,
+			NORMAL
+		}
+		
+		structure CPIChangeMessage<valueObject> {
+			long chargingPointId,
+			float chargedEnergy,
+			string userId,
+			float current_L1,
+			float current_L2,
+			float current_L3,
+			float voltage_L1,
+			float voltage_L2,
+			float voltage_L3,
+			int current_Limit,
+			date timestamp,
+			Status status
+		}
+		
+		enum Status {
+			A,
+			B,
+			C,
+			D
+		}
+	
+		list IDs {string}
+	}
+}

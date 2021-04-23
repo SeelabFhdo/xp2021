@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="ASCII"?>
+<intermediate:IntermediateOperationModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:intermediate="http://www.fhdo.de/lemma/operation/intermediate" sourceModelUri="file://C:/Users/Simon/Documents/Arbeitsordner LEMMA/puls-amp-2021/infrastructure/keycloak.operation">
+  <imports name="keycloak" importUri="file://C:/Users/Simon/Documents/Arbeitsordner LEMMA/puls-amp-2021/technology/keycloak.technology" importTypeName="TECHNOLOGY"/>
+  <imports name="container_base" importUri="file://C:/Users/Simon/Documents/Arbeitsordner LEMMA/puls-amp-2021/technology/container_base.technology" importTypeName="TECHNOLOGY"/>
+  <imports name="bookingService" importUri="file://C:/Users/Simon/Documents/Arbeitsordner LEMMA/LEMMA_Workspace/puls-amp-2021/intermediate/operation models/booking.xmi" importTypeName="OPERATION_NODES"/>
+  <imports name="environmentService" importUri="file://C:/Users/Simon/Documents/Arbeitsordner LEMMA/LEMMA_Workspace/puls-amp-2021/intermediate/operation models/environment.xmi" importTypeName="OPERATION_NODES"/>
+  <imports name="parkAndChargeService" importUri="file://C:/Users/Simon/Documents/Arbeitsordner LEMMA/LEMMA_Workspace/puls-amp-2021/intermediate/operation models/parkAndCharge.xmi" importTypeName="OPERATION_NODES"/>
+  <infrastructureNodes name="Keycloak" imports="//@imports.0 //@imports.1" operationEnvironment="//@infrastructureNodes.0/@reference/@technology/@environment" qualifiedInfrastructureTechnologyName="Keycloak.Keycloak">
+    <defaultValues value="https://auth.seelab.fh-dortmund.de/auth" technologySpecificProperty="//@infrastructureNodes.0/@reference/@technology/@properties.0"/>
+    <defaultValues value="puls" technologySpecificProperty="//@infrastructureNodes.0/@reference/@technology/@properties.1"/>
+    <defaultValues value="puls" technologySpecificProperty="//@infrastructureNodes.0/@reference/@technology/@properties.2"/>
+    <defaultValues value="true" technologySpecificProperty="//@infrastructureNodes.0/@reference/@technology/@properties.3"/>
+    <usedByNodes imported="true" name="BookingService" qualifiedTechnologyName="container_base.Kubernetes" import="//@imports.2"/>
+    <usedByNodes imported="true" name="EnvironmentService" qualifiedTechnologyName="container_base.Kubernetes" import="//@imports.3"/>
+    <usedByNodes imported="true" name="ParkAndChargeService" qualifiedTechnologyName="container_base.Kubernetes" import="//@imports.4"/>
+    <reference import="//@imports.0">
+      <technology name="Keycloak">
+        <environment environmentName="openjdk:11-jdk-slim"/>
+        <properties name="keycloakAuthServerUrl" type="string">
+          <featureNames>MANDATORY</featureNames>
+        </properties>
+        <properties name="keycloakRealm" type="string">
+          <featureNames>MANDATORY</featureNames>
+        </properties>
+        <properties name="keycloakResource" type="string">
+          <featureNames>MANDATORY</featureNames>
+        </properties>
+        <properties name="keycloakBearerOnly" type="boolean">
+          <featureNames>MANDATORY</featureNames>
+        </properties>
+      </technology>
+    </reference>
+  </infrastructureNodes>
+</intermediate:IntermediateOperationModel>

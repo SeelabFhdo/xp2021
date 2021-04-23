@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="ASCII"?>
+<intermediate:IntermediateOperationModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:intermediate="http://www.fhdo.de/lemma/operation/intermediate" sourceModelUri="file://C:/Users/Simon/Documents/Arbeitsordner LEMMA/puls-amp-2021/ParkAndChargeService/parkAndCharge.operation">
+  <imports name="parkAndChargeService" importUri="file://C:/Users/Simon/Documents/Arbeitsordner LEMMA/LEMMA_Workspace/puls-amp-2021/intermediate/service models/parkAndCharge.xmi" importTypeName="MICROSERVICES"/>
+  <imports name="container_base" importUri="file://C:/Users/Simon/Documents/Arbeitsordner LEMMA/puls-amp-2021/technology/container_base.technology" importTypeName="TECHNOLOGY"/>
+  <imports name="protocol" importUri="file://C:/Users/Simon/Documents/Arbeitsordner LEMMA/puls-amp-2021/technology/protocol.technology" importTypeName="TECHNOLOGY"/>
+  <imports name="eureka" importUri="file://C:/Users/Simon/Documents/Arbeitsordner LEMMA/LEMMA_Workspace/puls-amp-2021/intermediate/operation models/eureka.xmi" importTypeName="OPERATION_NODES"/>
+  <imports name="mongoDB" importUri="file://C:/Users/Simon/Documents/Arbeitsordner LEMMA/LEMMA_Workspace/puls-amp-2021/intermediate/operation models/mongodb.xmi" importTypeName="OPERATION_NODES"/>
+  <imports name="keycloak" importUri="file://C:/Users/Simon/Documents/Arbeitsordner LEMMA/LEMMA_Workspace/puls-amp-2021/intermediate/operation models/keycloak.xmi" importTypeName="OPERATION_NODES"/>
+  <imports name="kafka" importUri="file://C:/Users/Simon/Documents/Arbeitsordner LEMMA/LEMMA_Workspace/puls-amp-2021/intermediate/operation models/kafka.xmi" importTypeName="OPERATION_NODES"/>
+  <containers name="ParkAndChargeService" imports="//@imports.1 //@imports.2" operationEnvironment="//@containers.0/@technologyReference/@technology/@environment" qualifiedDeploymentTechnologyName="container_base.Kubernetes">
+    <deployedServices name="de.fhdo.puls.ParkAndChargeService" version="v01" qualifiedName="v01.de.fhdo.puls.ParkAndChargeService" imported="true" import="//@imports.0" effectivelyImplemented="true" microserviceType="FUNCTIONAL" visibility="PUBLIC"/>
+    <endpoints communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json" technology="//@containers.0/@endpoints.0/@endpointTechnology">
+      <addresses>http://localhost:8071/parkAndChargeService</addresses>
+      <endpointTechnology name="protocol" import="//@imports.2"/>
+    </endpoints>
+    <defaultValues value="ParkAndChargeService" technologySpecificProperty="//@containers.0/@technologyReference/@technology/@properties.0"/>
+    <defaultValues value="8071" technologySpecificProperty="//@containers.0/@technologyReference/@technology/@properties.1"/>
+    <defaultValues value="root" technologySpecificProperty="//@containers.0/@technologyReference/@technology/@properties.9"/>
+    <defaultValues value="password" technologySpecificProperty="//@containers.0/@technologyReference/@technology/@properties.10"/>
+    <defaultValues value="mongodb" technologySpecificProperty="//@containers.0/@technologyReference/@technology/@properties.5"/>
+    <defaultValues value="27017" technologySpecificProperty="//@containers.0/@technologyReference/@technology/@properties.6"/>
+    <defaultValues value="parkAndCharge" technologySpecificProperty="//@containers.0/@technologyReference/@technology/@properties.8"/>
+    <defaultValues value="kafka-server1:9092" technologySpecificProperty="//@containers.0/@technologyReference/@technology/@properties.12"/>
+    <defaultValues value="puls" technologySpecificProperty="//@containers.0/@technologyReference/@technology/@properties.13"/>
+    <defaultValues value="park_and_charge_service" technologySpecificProperty="//@containers.0/@technologyReference/@technology/@properties.14"/>
+    <defaultValues value="https://auth.seelab.fh-dortmund.de/auth" technologySpecificProperty="//@containers.0/@technologyReference/@technology/@properties.15"/>
+    <defaultValues value="puls" technologySpecificProperty="//@containers.0/@technologyReference/@technology/@properties.16"/>
+    <defaultValues value="puls" technologySpecificProperty="//@containers.0/@technologyReference/@technology/@properties.17"/>
+    <defaultValues value="true" technologySpecificProperty="//@containers.0/@technologyReference/@technology/@properties.18"/>
+    <defaultValues value="http://discovery-service:8761/eureka" technologySpecificProperty="//@containers.0/@technologyReference/@technology/@properties.11"/>
+    <dependsOnNodes imported="true" name="Eureka" qualifiedTechnologyName="Eureka.Eureka" import="//@imports.3"/>
+    <dependsOnNodes imported="true" name="MongoDB" qualifiedTechnologyName="MongoDB.MongoDB" import="//@imports.4"/>
+    <dependsOnNodes imported="true" name="Keycloak" qualifiedTechnologyName="Keycloak.Keycloak" import="//@imports.5"/>
+    <dependsOnNodes imported="true" name="Kafka" qualifiedTechnologyName="Kafka.Kafka" import="//@imports.6"/>
+    <technologyReference import="//@imports.1">
+      <technology name="Kubernetes">
+        <environment environmentName="openjdk:11-jdk-slim" default="true"/>
+        <properties name="springApplicationName" type="string"/>
+        <properties name="serverPort" type="int"/>
+        <properties name="springDatasourceUsername" type="string"/>
+        <properties name="springDatasourcePassword" type="string"/>
+        <properties name="springDatasourceUrl" type="string"/>
+        <properties name="springDataMongodbHost" type="string"/>
+        <properties name="springDataMongodbPort" type="int"/>
+        <properties name="springDataMongodbUri" type="string"/>
+        <properties name="springDataMongodbDatabase" type="string"/>
+        <properties name="springDataMongodbUsername" type="string"/>
+        <properties name="stringDataMongodbPassword" type="string"/>
+        <properties name="eurekaUri" type="string"/>
+        <properties name="kafkaBootstrapAddress" type="string"/>
+        <properties name="kafkaMessageTopicName" type="string"/>
+        <properties name="kafkaGroupId" type="string"/>
+        <properties name="keycloakAuthServerUrl" type="string"/>
+        <properties name="keycloakRealm" type="string"/>
+        <properties name="keycloakResource" type="string"/>
+        <properties name="keycloakBearerOnly" type="boolean"/>
+      </technology>
+    </technologyReference>
+  </containers>
+</intermediate:IntermediateOperationModel>

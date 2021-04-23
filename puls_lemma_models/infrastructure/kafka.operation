@@ -1,0 +1,14 @@
+import technology from "../technology/kafka.technology" as kafka
+import nodes from "../BookingService/booking.operation" as bookingService
+
+@technology(kafka)
+Kafka is kafka::_infrastructure.Kafka
+	with operation environment "openjdk:11-jdk-slim"
+	used by nodes 
+		bookingService::BookingService {
+		default values{
+			bootstrapAddress=""
+			groupId=""
+			messageTopicName=""
+		}
+}

@@ -1,0 +1,146 @@
+import datatypes from "booking.data" as bookingData
+import technology from "../technology/spring.technology" as java
+
+@technology(java)
+public functional microservice de.fhdo.puls.BookingService version v01 { 
+	
+	//Interface for CRUD-Methods of ParkBookings
+	@endpoints(java::_protocols.rest: "/resources/v1";)
+	interface ParkBookingApi{
+		
+		//Create ParkBooking
+		@endpoints(java::_protocols.rest: "/parkBooking";)
+		@java::_aspects.PostMapping
+		public createParkBooking(
+			@java::_aspects.RequestBody
+			sync in parkBooking : bookingData::v01.Booking.ParkBookingAggregate
+		);
+		
+		//Read ParkBooking
+		@endpoints(java::_protocols.rest: "/parkBooking/{bookingId}";)
+		@java::_aspects.GetMapping
+		public readParkBooking(
+			@java::_aspects.PathVariable(value="bookingId")
+			sync in bookingId : long,
+			sync out parBooking : bookingData::v01.Booking.ParkBookingAggregate
+		);
+		
+		//Read all ParkBookings
+		@endpoints(java::_protocols.rest: "/parkBookings";)
+		@java::_aspects.GetMapping
+		public readAllParkBookings(
+			sync out parkBookings : bookingData::v01.Booking.ParkBookingAggregate
+		);
+		
+		//Read ParkBooking Blockchain data
+		@endpoints(java::_protocols.rest: "/parkBooking/blockchainQuery/{bookingId}";)
+		@java::_aspects.GetMapping
+		public readParkBookingBlockchainData(
+			@java::_aspects.PathVariable(value="bookingId")
+			sync in booking : long,
+			sync out blockchainDataParkBooking : bookingData::v01.Booking.BlockchainDataParkBooking
+		);
+		
+		//Read all current bookings of a given parking space
+		@endpoints(java::_protocols.rest: "/parkBookings/{parkingSpaceId}";)
+		public readCurrentBookingsOfParkingSpace(
+			@java::_aspects.PathVariable(value="parkingSpaceId")
+			sync in parkingSpaceId : long,
+			sync out parkBookings : bookingData::v01.Booking.ParkBookingAggregate
+		);
+		
+		//Read all canceled bookings of a given parking space
+		@endpoints(java::_protocols.rest: "/canceledParkBookings/{parkingSpaceId}";)
+		public readCanceledBookingsOfParkingSpace(
+			sync in parkingSpaceId : long,
+			sync out parkBookings : bookingData::v01.Booking.ParkBookingAggregate
+		);
+		
+		//Update ParkBooking
+		@endpoints(java::_protocols.rest: "/parkBooking";)
+		@java::_aspects.PutMapping
+		public updateParkBooking(
+			@java::_aspects.RequestBody
+			sync in parkBooking : bookingData::v01.Booking.ParkBookingAggregate
+		);
+		
+		//Delete ParkBooking
+		@endpoints(java::_protocols.rest: "/parkBooking";)
+		@java::_aspects.DeleteMapping
+		public deletParkBooking(
+			@java::_aspects.RequestBody
+			sync in parkBooking : bookingData::v01.Booking.ParkBookingAggregate
+		);
+	}
+	
+	
+	
+	//Interface for CRUD-Methods of ParkAndChargeBookings
+	@endpoints(java::_protocols.rest: "/resources/v1";)
+	interface ParkAndChargeBookingApi {
+		
+		//Create ParkAndChargeBooking
+		@endpoints(java::_protocols.rest: "/parkAndChargeBooking";)
+		@java::_aspects.PostMapping
+		public createParkAndChargeBooking(
+			@java::_aspects.RequestBody
+			sync in parkAndChargeBooking : bookingData::v01.Booking.ParkAndChargeBookingAggregate
+		);
+		
+		//Read ParkAndChargeBooking
+		@endpoints(java::_protocols.rest: "/parkAndChargeBooking/{bookingId}";)
+		@java::_aspects.GetMapping
+		public readParkAndChargeBooking(
+			@java::_aspects.PathVariable(value="bookingId")
+			sync in bookingId : long,
+			sync out parkAndChargeBooking : bookingData::v01.Booking.ParkAndChargeBookingAggregate
+		);
+		
+		//Read all ParkAndChargeBookings
+		@endpoints(java::_protocols.rest: "/parkAndChargeBookings";)
+		@java::_aspects.GetMapping
+		public readAllParkAndChargeBookings(
+			sync out parkAndChargeBookings : bookingData::v01.Booking.ParkAndChargeBookingAggregate
+		);
+		
+		//Read ParkAndChargeBooking Blockchain data
+		@endpoints(java::_protocols.rest: "/parkAndChargeBooking/blockchainQuery/{bookingId}";)
+		@java::_aspects.GetMapping
+		public readParkAndParkBookingBlockchainData(
+			@java::_aspects.PathVariable(value="bookingId")
+			sync in booking : long,
+			sync out blockchainDataParkAndChargeBooking : bookingData::v01.Booking.BlockchainDataParkAndChargeBooking
+		);
+		
+		//Read all current bookings of a given parking space
+		@endpoints(java::_protocols.rest: "/parkAndChargeBookings/{parkingSpaceId}";)
+		public readCurrentBookingsOfParkingSpace(
+			@java::_aspects.PathVariable(value="parkingSpaceId")
+			sync in parkingSpaceId : long,
+			sync out parkAndChargeBookings : bookingData::v01.Booking.ParkAndChargeBookingAggregate
+		);
+		
+		//Read all canceled bookings of a given parking space
+		@endpoints(java::_protocols.rest: "/canceledParkAndChargeBookings/{parkingSpaceId}";)
+		public readCanceledBookingsOfParkingSpace(
+			sync in parkingSpaceId : long,
+			sync out parkAndChargeBookings : bookingData::v01.Booking.ParkAndChargeBookingAggregate
+		);
+		
+		//Update ParAndChargekBooking
+		@endpoints(java::_protocols.rest: "/parkAndChargeBooking";)
+		@java::_aspects.PutMapping
+		public updateParkAndChargeBooking(
+			@java::_aspects.RequestBody
+			sync in parkAndChargeBooking : bookingData::v01.Booking.ParkAndChargeBookingAggregate
+		);
+		
+		//Delete ParkAndChargeBooking
+		@endpoints(java::_protocols.rest: "/parkAndChargeBooking";)
+		@java::_aspects.DeleteMapping
+		public deletParkAndChargeBooking(
+			@java::_aspects.RequestBody
+			sync in parkAndChargeBooking : bookingData::v01.Booking.ParkAndChargeBookingAggregate
+		);
+	}
+}

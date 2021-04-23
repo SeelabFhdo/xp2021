@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="ASCII"?>
+<intermediate:IntermediateOperationModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:intermediate="http://www.fhdo.de/lemma/operation/intermediate" sourceModelUri="file://C:/Users/Simon/Documents/Arbeitsordner LEMMA/puls-amp-2021/BookingService/booking.operation">
+  <imports name="bookingService" importUri="file://C:/Users/Simon/Documents/Arbeitsordner LEMMA/LEMMA_Workspace/puls-amp-2021/intermediate/service models/booking.xmi" importTypeName="MICROSERVICES"/>
+  <imports name="container_base" importUri="file://C:/Users/Simon/Documents/Arbeitsordner LEMMA/puls-amp-2021/technology/container_base.technology" importTypeName="TECHNOLOGY"/>
+  <imports name="ethereum" importUri="file://C:/Users/Simon/Documents/Arbeitsordner LEMMA/puls-amp-2021/technology/ethereum.technology" importTypeName="TECHNOLOGY"/>
+  <imports name="protocol" importUri="file://C:/Users/Simon/Documents/Arbeitsordner LEMMA/puls-amp-2021/technology/protocol.technology" importTypeName="TECHNOLOGY"/>
+  <imports name="ethereumOperation" importUri="file://C:/Users/Simon/Documents/Arbeitsordner LEMMA/LEMMA_Workspace/puls-amp-2021/intermediate/operation models/ethereum.xmi" importTypeName="OPERATION_NODES"/>
+  <imports name="eureka" importUri="file://C:/Users/Simon/Documents/Arbeitsordner LEMMA/LEMMA_Workspace/puls-amp-2021/intermediate/operation models/eureka.xmi" importTypeName="OPERATION_NODES"/>
+  <imports name="mariaDB" importUri="file://C:/Users/Simon/Documents/Arbeitsordner LEMMA/LEMMA_Workspace/puls-amp-2021/intermediate/operation models/mariadb.xmi" importTypeName="OPERATION_NODES"/>
+  <imports name="keycloakOperation" importUri="file://C:/Users/Simon/Documents/Arbeitsordner LEMMA/LEMMA_Workspace/puls-amp-2021/intermediate/operation models/keycloak.xmi" importTypeName="OPERATION_NODES"/>
+  <imports name="kafka" importUri="file://C:/Users/Simon/Documents/Arbeitsordner LEMMA/LEMMA_Workspace/puls-amp-2021/intermediate/operation models/kafka.xmi" importTypeName="OPERATION_NODES"/>
+  <containers name="BookingService" imports="//@imports.1 //@imports.2 //@imports.3" operationEnvironment="//@containers.0/@technologyReference/@technology/@environment" qualifiedDeploymentTechnologyName="container_base.Kubernetes">
+    <deployedServices name="de.fhdo.puls.BookingService" version="v01" qualifiedName="v01.de.fhdo.puls.BookingService" imported="true" import="//@imports.0" effectivelyImplemented="true" microserviceType="FUNCTIONAL" visibility="PUBLIC"/>
+    <endpoints communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json" technology="//@containers.0/@endpoints.0/@endpointTechnology">
+      <addresses>http://localhost:6061/bookingService</addresses>
+      <endpointTechnology name="protocol" import="//@imports.3"/>
+    </endpoints>
+    <defaultValues value="BookingService" technologySpecificProperty="//@containers.0/@technologyReference/@technology/@properties.0"/>
+    <defaultValues value="6061" technologySpecificProperty="//@containers.0/@technologyReference/@technology/@properties.1"/>
+    <defaultValues value="jdbc:mariadb://mariadb:3306/booking" technologySpecificProperty="//@containers.0/@technologyReference/@technology/@properties.4"/>
+    <defaultValues value="admin" technologySpecificProperty="//@containers.0/@technologyReference/@technology/@properties.2"/>
+    <defaultValues value="password" technologySpecificProperty="//@containers.0/@technologyReference/@technology/@properties.3"/>
+    <defaultValues value="localhost:9092" technologySpecificProperty="//@containers.0/@technologyReference/@technology/@properties.12"/>
+    <defaultValues value="puls" technologySpecificProperty="//@containers.0/@technologyReference/@technology/@properties.13"/>
+    <defaultValues value="booking_service" technologySpecificProperty="//@containers.0/@technologyReference/@technology/@properties.14"/>
+    <defaultValues value="https://auth.seelab.fh-dortmund.de/auth" technologySpecificProperty="//@containers.0/@technologyReference/@technology/@properties.15"/>
+    <defaultValues value="puls" technologySpecificProperty="//@containers.0/@technologyReference/@technology/@properties.16"/>
+    <defaultValues value="puls" technologySpecificProperty="//@containers.0/@technologyReference/@technology/@properties.17"/>
+    <defaultValues value="true" technologySpecificProperty="//@containers.0/@technologyReference/@technology/@properties.18"/>
+    <defaultValues value="http://discovery-service:8761/eureka" technologySpecificProperty="//@containers.0/@technologyReference/@technology/@properties.11"/>
+    <aspects name="EthereumNetwork" import="//@imports.2">
+      <featureNames>SINGLE_VALUED</featureNames>
+      <properties name="hostName" type="string">
+        <featureNames>MANDATORY</featureNames>
+      </properties>
+      <properties name="port" type="int">
+        <featureNames>MANDATORY</featureNames>
+      </properties>
+      <properties name="privateKey" type="string">
+        <featureNames>MANDATORY</featureNames>
+      </properties>
+      <properties name="gasPrice" type="long">
+        <featureNames>MANDATORY</featureNames>
+      </properties>
+      <properties name="gasLimit" type="long">
+        <featureNames>MANDATORY</featureNames>
+      </properties>
+      <propertyValues value="eda29f72578fbcdf81cad972c61b4f3fa551932c45df419125486f4beb731d3b" property="//@containers.0/@aspects.0/@properties.2"/>
+      <propertyValues value="http://10.0.140.93" property="//@containers.0/@aspects.0/@properties.0"/>
+      <propertyValues value="8545" property="//@containers.0/@aspects.0/@properties.1"/>
+      <propertyValues value="8000000" property="//@containers.0/@aspects.0/@properties.4"/>
+      <propertyValues value="20000000000" property="//@containers.0/@aspects.0/@properties.3"/>
+    </aspects>
+    <dependsOnNodes imported="true" name="Ethereum" qualifiedTechnologyName="Ethereum.EthereumBlockchain" import="//@imports.4"/>
+    <dependsOnNodes imported="true" name="Eureka" qualifiedTechnologyName="Eureka.Eureka" import="//@imports.5"/>
+    <dependsOnNodes imported="true" name="MariaDB" qualifiedTechnologyName="MariaDB.MariaDB" import="//@imports.6"/>
+    <dependsOnNodes imported="true" name="Keycloak" qualifiedTechnologyName="Keycloak.Keycloak" import="//@imports.7"/>
+    <dependsOnNodes imported="true" name="Kafka" qualifiedTechnologyName="Kafka.Kafka" import="//@imports.8"/>
+    <technologyReference import="//@imports.1">
+      <technology name="Kubernetes">
+        <environment environmentName="openjdk:11-jdk-slim" default="true"/>
+        <properties name="springApplicationName" type="string"/>
+        <properties name="serverPort" type="int"/>
+        <properties name="springDatasourceUsername" type="string"/>
+        <properties name="springDatasourcePassword" type="string"/>
+        <properties name="springDatasourceUrl" type="string"/>
+        <properties name="springDataMongodbHost" type="string"/>
+        <properties name="springDataMongodbPort" type="int"/>
+        <properties name="springDataMongodbUri" type="string"/>
+        <properties name="springDataMongodbDatabase" type="string"/>
+        <properties name="springDataMongodbUsername" type="string"/>
+        <properties name="stringDataMongodbPassword" type="string"/>
+        <properties name="eurekaUri" type="string"/>
+        <properties name="kafkaBootstrapAddress" type="string"/>
+        <properties name="kafkaMessageTopicName" type="string"/>
+        <properties name="kafkaGroupId" type="string"/>
+        <properties name="keycloakAuthServerUrl" type="string"/>
+        <properties name="keycloakRealm" type="string"/>
+        <properties name="keycloakResource" type="string"/>
+        <properties name="keycloakBearerOnly" type="boolean"/>
+      </technology>
+    </technologyReference>
+  </containers>
+</intermediate:IntermediateOperationModel>

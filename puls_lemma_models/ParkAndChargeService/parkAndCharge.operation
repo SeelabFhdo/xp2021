@@ -1,0 +1,48 @@
+import microservices from "parkAndCharge.services" as parkAndChargeService
+import technology from "../technology/container_base.technology" as container_base
+import technology from "../technology/protocol.technology" as ^protocol
+import nodes from "../infrastructure/eureka.operation" as eureka
+import nodes from "../infrastructure/mongodb.operation" as mongoDB
+import nodes from "../infrastructure/keycloak.operation" as keycloak
+import nodes from "../infrastructure/kafka.operation" as kafka
+
+@technology(container_base)
+@technology(^protocol)
+container ParkAndChargeService 
+	deployment technology container_base::_deployment.Kubernetes with operation environment  "openjdk:11-jdk-slim"
+	deploys parkAndChargeService::v01.de.fhdo.puls.ParkAndChargeService
+	depends on nodes 
+		eureka::Eureka,
+		mongoDB::MongoDB,
+		keycloak::Keycloak,
+		kafka::Kafka
+	{
+			default values {
+				//General Spring Boot configurations
+				springApplicationName="ParkAndChargeService"
+				serverPort=8071
+				
+				// MongoDB database configuration
+				springDataMongodbUsername="root"
+				stringDataMongodbPassword="password"
+				springDataMongodbHost="mongodb"
+				springDataMongodbPort=27017
+				springDataMongodbDatabase="parkAndCharge"
+				
+				//Kafka configuration
+				kafkaBootstrapAddress="kafka-server1:9092"
+				kafkaMessageTopicName="puls"
+				kafkaGroupId="park_and_charge_service"
+				
+				//Keycloak configuration
+				keycloakAuthServerUrl="https://auth.seelab.fh-dortmund.de/auth"
+				keycloakRealm="puls"
+				keycloakResource="puls"
+				keycloakBearerOnly=true
+				
+				//Eureka configuration
+				eurekaUri="http://discovery-service:8761/eureka"
+				
+				basic endpoints {^protocol::_protocols.rest: "http://localhost:8071/parkAndChargeService";}
+			}
+	}

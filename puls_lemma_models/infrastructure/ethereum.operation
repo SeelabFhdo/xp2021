@@ -1,0 +1,11 @@
+import technology from "../technology/ethereum.technology" as Ethereum
+import nodes from "../BookingService/booking.operation" as bookingService
+
+@technology(Ethereum)
+Ethereum is Ethereum:: _infrastructure.EthereumBlockchain 
+	used by nodes bookingService::BookingService {
+		default values {
+			blockchainNetworkHostname = "http://localhost"
+			blockchainNetworkPort = "8545"
+		}
+}

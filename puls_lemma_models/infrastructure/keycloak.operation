@@ -1,0 +1,22 @@
+import technology from "../technology/keycloak.technology" as keycloak
+import technology from "../technology/container_base.technology" as container_base
+import nodes from "../BookingService/booking.operation" as bookingService
+import nodes from "../EnvironmentService/environment.operation" as environmentService
+import nodes from "../ParkAndChargeService/parkAndCharge.operation" as parkAndChargeService
+
+@technology(keycloak)
+@technology(container_base)
+Keycloak is keycloak::_infrastructure.Keycloak 
+	with operation environment "openjdk:11-jdk-slim"
+	used by nodes 
+		bookingService::BookingService,
+		environmentService::EnvironmentService,
+		parkAndChargeService::ParkAndChargeService {
+		default values {
+			keycloakAuthServerUrl="https://auth.seelab.fh-dortmund.de/auth"
+			keycloakRealm="puls"
+			keycloakResource="puls"
+			keycloakBearerOnly=true
+		}	
+}
+		

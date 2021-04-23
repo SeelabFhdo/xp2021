@@ -1,0 +1,20 @@
+import technology from "../technology/container_base.technology" as container_base
+import technology from "../technology/mongodb.technology" as mongodb
+import nodes from "../EnvironmentService/environment.operation" as environmentService
+import nodes from "../ParkAndChargeService/parkAndCharge.operation" as parkAndChargeService
+
+@technology(container_base)
+@technology(mongodb)
+MongoDB is mongodb::_infrastructure.MongoDB
+    with operation environment "docker/mongo:latest"
+    used by nodes 
+    	environmentService::EnvironmentService,
+    	parkAndChargeService::ParkAndChargeService {
+        default values {
+			userName="root"
+			password="password"
+            database="parkAndCharge" //Noch eine zweite Datenbank für ParkAndChargeService angeben nicht möglich
+            imageType="DockerHub"
+            port=27017
+        }
+}

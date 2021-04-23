@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="ASCII"?>
+<intermediate:IntermediateServiceModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:intermediate="http://www.fhdo.de/lemma/service/intermediate" xmlns:intermediate_1="http://www.fhdo.de/lemma/data/intermediate" sourceModelUri="file://C:/Users/Simon/Documents/Arbeitsordner LEMMA/puls-amp-2021/ParkAndChargeService/parkAndCharge.services">
+  <imports name="parkAndChargeData" importUri="file://C:/Users/Simon/Documents/Arbeitsordner LEMMA/puls-amp-2021/ParkAndChargeService/parkAndCharge.data" importTypeName="DATATYPES"/>
+  <imports name="java" importUri="file://C:/Users/Simon/Documents/Arbeitsordner LEMMA/puls-amp-2021/technology/spring.technology" importTypeName="TECHNOLOGY"/>
+  <microservices sourceModelUri="file://C:/Users/Simon/Documents/Arbeitsordner LEMMA/puls-amp-2021/ParkAndChargeService/parkAndCharge.services" name="de.fhdo.puls.ParkAndChargeService" version="v01" qualifiedName="v01.de.fhdo.puls.ParkAndChargeService" type="FUNCTIONAL" visibility="PUBLIC" effectivelyImplemented="true">
+    <technologies name="java" import="//@imports.1"/>
+    <protocols communicationType="ASYNCHRONOUS" protocol="mqtt" dataFormat="application/xml"/>
+    <protocols communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json"/>
+    <interfaces name="ParkingSpaceApi" qualifiedName="v01.de.fhdo.puls.ParkAndChargeService.ParkingSpaceApi" visibility="PUBLIC" hasImplementedOperations="true">
+      <endpoints communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json" technology="//@microservices.0/@technologies.0">
+        <addresses>/resources/v1</addresses>
+      </endpoints>
+      <protocols communicationType="ASYNCHRONOUS" protocol="mqtt" dataFormat="application/xml"/>
+      <protocols communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json"/>
+      <operations name="createParkingSpace" qualifiedName="v01.de.fhdo.puls.ParkAndChargeService.ParkingSpaceApi.createParkingSpace" visibility="PUBLIC">
+        <endpoints communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json" technology="//@microservices.0/@technologies.0">
+          <addresses>/parkingSpace</addresses>
+        </endpoints>
+        <protocols communicationType="ASYNCHRONOUS" protocol="mqtt" dataFormat="application/xml"/>
+        <protocols communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json"/>
+        <aspects name="PostMapping" qualifiedName="springcloud.PostMapping" import="//@imports.1">
+          <properties name="value" type="string"/>
+        </aspects>
+        <parameters name="parkingSpace" qualifiedName="v01.de.fhdo.puls.ParkAndChargeService.ParkingSpaceApi.createParkingSpace.parkingSpace" exchangePattern="IN" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="ParkingSpaceAggregate" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="v01.ParkAndCharge.ParkingSpaceAggregate" import="//@imports.0"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="ParkingSpaceAggregate" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="v01.ParkAndCharge.ParkingSpaceAggregate" import="//@imports.0"/>
+          <aspects name="RequestBody" qualifiedName="springcloud.RequestBody" import="//@imports.1">
+            <properties name="value" type="string"/>
+          </aspects>
+        </parameters>
+      </operations>
+      <operations name="getParkingSpaceById" qualifiedName="v01.de.fhdo.puls.ParkAndChargeService.ParkingSpaceApi.getParkingSpaceById" visibility="PUBLIC">
+        <endpoints communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json" technology="//@microservices.0/@technologies.0">
+          <addresses>/parkingSpace/id/{id}</addresses>
+        </endpoints>
+        <protocols communicationType="ASYNCHRONOUS" protocol="mqtt" dataFormat="application/xml"/>
+        <protocols communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json"/>
+        <aspects name="GetMapping" qualifiedName="springcloud.GetMapping" import="//@imports.1">
+          <properties name="value" type="string"/>
+        </aspects>
+        <parameters name="id" qualifiedName="v01.de.fhdo.puls.ParkAndChargeService.ParkingSpaceApi.getParkingSpaceById.id" exchangePattern="IN" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="TestString" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="springcloud._types.TestString" import="//@imports.1"/>
+          <originalType xsi:type="intermediate_1:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+          <aspects name="PathVariable" qualifiedName="springcloud.PathVariable" import="//@imports.1">
+            <properties name="value" type="string"/>
+            <propertyValues value="id" property="//@microservices.0/@interfaces.0/@operations.1/@parameters.0/@aspects.0/@properties.0"/>
+          </aspects>
+        </parameters>
+        <parameters name="parkingSpace" qualifiedName="v01.de.fhdo.puls.ParkAndChargeService.ParkingSpaceApi.getParkingSpaceById.parkingSpace" exchangePattern="OUT" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="ParkingSpaceAggregate" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="v01.ParkAndCharge.ParkingSpaceAggregate" import="//@imports.0"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="ParkingSpaceAggregate" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="v01.ParkAndCharge.ParkingSpaceAggregate" import="//@imports.0"/>
+        </parameters>
+      </operations>
+      <operations name="getParkingSpacesByIds" qualifiedName="v01.de.fhdo.puls.ParkAndChargeService.ParkingSpaceApi.getParkingSpacesByIds" visibility="PUBLIC">
+        <endpoints communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json" technology="//@microservices.0/@technologies.0">
+          <addresses>/parkingSpace/ids</addresses>
+        </endpoints>
+        <protocols communicationType="ASYNCHRONOUS" protocol="mqtt" dataFormat="application/xml"/>
+        <protocols communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json"/>
+        <aspects name="GetMapping" qualifiedName="springcloud.GetMapping" import="//@imports.1">
+          <properties name="value" type="string"/>
+        </aspects>
+        <parameters name="ids" qualifiedName="v01.de.fhdo.puls.ParkAndChargeService.ParkingSpaceApi.getParkingSpacesByIds.ids" exchangePattern="IN" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="IDs" origin="DATA_MODEL" kind="LIST" qualifiedName="v01.ParkAndCharge.IDs" import="//@imports.0"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="IDs" origin="DATA_MODEL" kind="LIST" qualifiedName="v01.ParkAndCharge.IDs" import="//@imports.0"/>
+          <aspects name="RequestBody" qualifiedName="springcloud.RequestBody" import="//@imports.1">
+            <properties name="value" type="string"/>
+          </aspects>
+        </parameters>
+        <parameters name="parkingSpaces" qualifiedName="v01.de.fhdo.puls.ParkAndChargeService.ParkingSpaceApi.getParkingSpacesByIds.parkingSpaces" exchangePattern="OUT" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="ParkingSpaceAggregate" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="v01.ParkAndCharge.ParkingSpaceAggregate" import="//@imports.0"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="ParkingSpaceAggregate" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="v01.ParkAndCharge.ParkingSpaceAggregate" import="//@imports.0"/>
+        </parameters>
+      </operations>
+      <operations name="getAllParkingSpaces" qualifiedName="v01.de.fhdo.puls.ParkAndChargeService.ParkingSpaceApi.getAllParkingSpaces" visibility="PUBLIC">
+        <endpoints communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json" technology="//@microservices.0/@technologies.0">
+          <addresses>/parkingSpaces</addresses>
+        </endpoints>
+        <protocols communicationType="ASYNCHRONOUS" protocol="mqtt" dataFormat="application/xml"/>
+        <protocols communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json"/>
+        <aspects name="GetMapping" qualifiedName="springcloud.GetMapping" import="//@imports.1">
+          <properties name="value" type="string"/>
+        </aspects>
+        <parameters name="parkingSpaces" qualifiedName="v01.de.fhdo.puls.ParkAndChargeService.ParkingSpaceApi.getAllParkingSpaces.parkingSpaces" exchangePattern="OUT" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="ParkingSpaceAggregate" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="v01.ParkAndCharge.ParkingSpaceAggregate" import="//@imports.0"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="ParkingSpaceAggregate" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="v01.ParkAndCharge.ParkingSpaceAggregate" import="//@imports.0"/>
+        </parameters>
+      </operations>
+    </interfaces>
+    <interfaces name="ElectrifiedParkingSpaceApi" qualifiedName="v01.de.fhdo.puls.ParkAndChargeService.ElectrifiedParkingSpaceApi" visibility="PUBLIC" hasImplementedOperations="true">
+      <endpoints communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json" technology="//@microservices.0/@technologies.0">
+        <addresses>/resources/v1</addresses>
+      </endpoints>
+      <protocols communicationType="ASYNCHRONOUS" protocol="mqtt" dataFormat="application/xml"/>
+      <protocols communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json"/>
+      <operations name="createElectrifiedParkingSpace" qualifiedName="v01.de.fhdo.puls.ParkAndChargeService.ElectrifiedParkingSpaceApi.createElectrifiedParkingSpace" visibility="PUBLIC">
+        <endpoints communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json" technology="//@microservices.0/@technologies.0">
+          <addresses>/electrifiedParkingSpace</addresses>
+        </endpoints>
+        <protocols communicationType="ASYNCHRONOUS" protocol="mqtt" dataFormat="application/xml"/>
+        <protocols communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json"/>
+        <aspects name="PostMapping" qualifiedName="springcloud.PostMapping" import="//@imports.1">
+          <properties name="value" type="string"/>
+        </aspects>
+        <parameters name="electrifiedParkingSpace" qualifiedName="v01.de.fhdo.puls.ParkAndChargeService.ElectrifiedParkingSpaceApi.createElectrifiedParkingSpace.electrifiedParkingSpace" exchangePattern="IN" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="ElectrifiedParkingSpaceAggregate" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="v01.ParkAndCharge.ElectrifiedParkingSpaceAggregate" import="//@imports.0"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="ElectrifiedParkingSpaceAggregate" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="v01.ParkAndCharge.ElectrifiedParkingSpaceAggregate" import="//@imports.0"/>
+          <aspects name="RequestBody" qualifiedName="springcloud.RequestBody" import="//@imports.1">
+            <properties name="value" type="string"/>
+          </aspects>
+        </parameters>
+      </operations>
+      <operations name="getElectrifiedParkingSpaceById" qualifiedName="v01.de.fhdo.puls.ParkAndChargeService.ElectrifiedParkingSpaceApi.getElectrifiedParkingSpaceById" visibility="PUBLIC">
+        <endpoints communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json" technology="//@microservices.0/@technologies.0">
+          <addresses>/electrifiedParkingSpace/id/{id}</addresses>
+        </endpoints>
+        <protocols communicationType="ASYNCHRONOUS" protocol="mqtt" dataFormat="application/xml"/>
+        <protocols communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json"/>
+        <aspects name="GetMapping" qualifiedName="springcloud.GetMapping" import="//@imports.1">
+          <properties name="value" type="string"/>
+        </aspects>
+        <parameters name="id" qualifiedName="v01.de.fhdo.puls.ParkAndChargeService.ElectrifiedParkingSpaceApi.getElectrifiedParkingSpaceById.id" exchangePattern="IN" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="TestString" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="springcloud._types.TestString" import="//@imports.1"/>
+          <originalType xsi:type="intermediate_1:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+          <aspects name="PathVariable" qualifiedName="springcloud.PathVariable" import="//@imports.1">
+            <properties name="value" type="string"/>
+            <propertyValues value="id" property="//@microservices.0/@interfaces.1/@operations.1/@parameters.0/@aspects.0/@properties.0"/>
+          </aspects>
+        </parameters>
+        <parameters name="electrifiedParkingSpace" qualifiedName="v01.de.fhdo.puls.ParkAndChargeService.ElectrifiedParkingSpaceApi.getElectrifiedParkingSpaceById.electrifiedParkingSpace" exchangePattern="OUT" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="ElectrifiedParkingSpaceAggregate" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="v01.ParkAndCharge.ElectrifiedParkingSpaceAggregate" import="//@imports.0"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="ElectrifiedParkingSpaceAggregate" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="v01.ParkAndCharge.ElectrifiedParkingSpaceAggregate" import="//@imports.0"/>
+        </parameters>
+      </operations>
+      <operations name="getElectrifiedParkingSpacesByIds" qualifiedName="v01.de.fhdo.puls.ParkAndChargeService.ElectrifiedParkingSpaceApi.getElectrifiedParkingSpacesByIds" visibility="PUBLIC">
+        <endpoints communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json" technology="//@microservices.0/@technologies.0">
+          <addresses>/electrifiedParkingSpace/ids</addresses>
+        </endpoints>
+        <protocols communicationType="ASYNCHRONOUS" protocol="mqtt" dataFormat="application/xml"/>
+        <protocols communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json"/>
+        <aspects name="GetMapping" qualifiedName="springcloud.GetMapping" import="//@imports.1">
+          <properties name="value" type="string"/>
+        </aspects>
+        <parameters name="ids" qualifiedName="v01.de.fhdo.puls.ParkAndChargeService.ElectrifiedParkingSpaceApi.getElectrifiedParkingSpacesByIds.ids" exchangePattern="IN" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="IDs" origin="DATA_MODEL" kind="LIST" qualifiedName="v01.ParkAndCharge.IDs" import="//@imports.0"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="IDs" origin="DATA_MODEL" kind="LIST" qualifiedName="v01.ParkAndCharge.IDs" import="//@imports.0"/>
+          <aspects name="RequestBody" qualifiedName="springcloud.RequestBody" import="//@imports.1">
+            <properties name="value" type="string"/>
+          </aspects>
+        </parameters>
+        <parameters name="electrifiedParkingSpaces" qualifiedName="v01.de.fhdo.puls.ParkAndChargeService.ElectrifiedParkingSpaceApi.getElectrifiedParkingSpacesByIds.electrifiedParkingSpaces" exchangePattern="OUT" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="ElectrifiedParkingSpaceAggregate" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="v01.ParkAndCharge.ElectrifiedParkingSpaceAggregate" import="//@imports.0"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="ElectrifiedParkingSpaceAggregate" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="v01.ParkAndCharge.ElectrifiedParkingSpaceAggregate" import="//@imports.0"/>
+        </parameters>
+      </operations>
+      <operations name="getAllElectrifiedParkingSpaces" qualifiedName="v01.de.fhdo.puls.ParkAndChargeService.ElectrifiedParkingSpaceApi.getAllElectrifiedParkingSpaces" visibility="PUBLIC">
+        <endpoints communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json" technology="//@microservices.0/@technologies.0">
+          <addresses>/electrifiedParkingSpaces</addresses>
+        </endpoints>
+        <protocols communicationType="ASYNCHRONOUS" protocol="mqtt" dataFormat="application/xml"/>
+        <protocols communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json"/>
+        <aspects name="GetMapping" qualifiedName="springcloud.GetMapping" import="//@imports.1">
+          <properties name="value" type="string"/>
+        </aspects>
+        <parameters name="electrifiedParkingSpaces" qualifiedName="v01.de.fhdo.puls.ParkAndChargeService.ElectrifiedParkingSpaceApi.getAllElectrifiedParkingSpaces.electrifiedParkingSpaces" exchangePattern="OUT" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="ElectrifiedParkingSpaceAggregate" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="v01.ParkAndCharge.ElectrifiedParkingSpaceAggregate" import="//@imports.0"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="ElectrifiedParkingSpaceAggregate" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="v01.ParkAndCharge.ElectrifiedParkingSpaceAggregate" import="//@imports.0"/>
+        </parameters>
+      </operations>
+    </interfaces>
+  </microservices>
+</intermediate:IntermediateServiceModel>
