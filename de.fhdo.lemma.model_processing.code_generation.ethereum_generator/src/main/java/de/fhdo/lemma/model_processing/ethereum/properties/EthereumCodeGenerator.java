@@ -152,6 +152,15 @@ public class EthereumCodeGenerator extends AbstractCodeGenerationModule {
         final String microserviceFilePath = Util.buildPathFromQualifiedName(microserviceReference.getQualifiedName());
         microserviceReference.getNode().getAspects().forEach(intermediateImportedAspect -> {
             var aspect = intermediateImportedAspect;
+
+            microserviceReference.getNode().getDefaultValues().forEach(intermediateTechnologySpecificPropertyValue -> {
+                var technologySpecificProperty =
+                        intermediateTechnologySpecificPropertyValue.getTechnologySpecificProperty();
+                var propertyName = technologySpecificProperty.getName();
+                var propertyValue = intermediateTechnologySpecificPropertyValue.getValue();
+                properties.setProperty(propertyName, propertyValue);
+            });
+
             if (aspect.getName().equals("EthereumNetwork")) {
                 aspect.getPropertyValues().forEach(intermediateAspectPropertyValue -> {
                     var propertyName = intermediateAspectPropertyValue.getProperty().getName();
@@ -160,6 +169,7 @@ public class EthereumCodeGenerator extends AbstractCodeGenerationModule {
                 });
             }
         });
+        
         PropertyFile propertyFile = new PropertyFile(microserviceFilePath,properties);
         OpenedPropertyFiles.getInstance().add(propertyFile);
     }
